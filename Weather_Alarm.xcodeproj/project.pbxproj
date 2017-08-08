@@ -14,6 +14,12 @@
 		0CAFAFB41F39DEF1007EBB26 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CAFAFB21F39DEF1007EBB26 /* LaunchScreen.storyboard */; };
 		0CAFAFBF1F39DEF1007EBB26 /* Weather_AlarmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAFAFBE1F39DEF1007EBB26 /* Weather_AlarmTests.swift */; };
 		0CAFAFCA1F39DEF1007EBB26 /* Weather_AlarmUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAFAFC91F39DEF1007EBB26 /* Weather_AlarmUITests.swift */; };
+		0CAFAFDE1F39DF6C007EBB26 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAFAFDD1F39DF6C007EBB26 /* TimerView.swift */; };
+		0CAFAFE11F39DFB6007EBB26 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAFAFE01F39DFB6007EBB26 /* UIColorExtension.swift */; };
+		0CAFAFE31F39DFDA007EBB26 /* NSShadowExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAFAFE21F39DFDA007EBB26 /* NSShadowExtension.swift */; };
+		0CAFAFE51F39E001007EBB26 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAFAFE41F39E001007EBB26 /* Weather.swift */; };
+		0CAFAFE71F39E04C007EBB26 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAFAFE61F39E04C007EBB26 /* Circle.swift */; };
+		0CAFAFE91F39E08F007EBB26 /* BaseCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAFAFE81F39E08F007EBB26 /* BaseCircle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +53,12 @@
 		0CAFAFC51F39DEF1007EBB26 /* Weather_AlarmUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Weather_AlarmUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CAFAFC91F39DEF1007EBB26 /* Weather_AlarmUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather_AlarmUITests.swift; sourceTree = "<group>"; };
 		0CAFAFCB1F39DEF1007EBB26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0CAFAFDD1F39DF6C007EBB26 /* TimerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		0CAFAFE01F39DFB6007EBB26 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		0CAFAFE21F39DFDA007EBB26 /* NSShadowExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSShadowExtension.swift; sourceTree = "<group>"; };
+		0CAFAFE41F39E001007EBB26 /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		0CAFAFE61F39E04C007EBB26 /* Circle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
+		0CAFAFE81F39E08F007EBB26 /* BaseCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCircle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +109,8 @@
 		0CAFAFA81F39DEF1007EBB26 /* Weather_Alarm */ = {
 			isa = PBXGroup;
 			children = (
+				0CAFAFDF1F39DF92007EBB26 /* Extensions */,
+				0CAFAFDC1F39DF45007EBB26 /* WeatherView */,
 				0CAFAFA91F39DEF1007EBB26 /* AppDelegate.swift */,
 				0CAFAFAB1F39DEF1007EBB26 /* ViewController.swift */,
 				0CAFAFAD1F39DEF1007EBB26 /* Main.storyboard */,
@@ -123,6 +137,26 @@
 				0CAFAFCB1F39DEF1007EBB26 /* Info.plist */,
 			);
 			path = Weather_AlarmUITests;
+			sourceTree = "<group>";
+		};
+		0CAFAFDC1F39DF45007EBB26 /* WeatherView */ = {
+			isa = PBXGroup;
+			children = (
+				0CAFAFDD1F39DF6C007EBB26 /* TimerView.swift */,
+				0CAFAFE41F39E001007EBB26 /* Weather.swift */,
+				0CAFAFE61F39E04C007EBB26 /* Circle.swift */,
+				0CAFAFE81F39E08F007EBB26 /* BaseCircle.swift */,
+			);
+			name = WeatherView;
+			sourceTree = "<group>";
+		};
+		0CAFAFDF1F39DF92007EBB26 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0CAFAFE01F39DFB6007EBB26 /* UIColorExtension.swift */,
+				0CAFAFE21F39DFDA007EBB26 /* NSShadowExtension.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,8 +293,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CAFAFE91F39E08F007EBB26 /* BaseCircle.swift in Sources */,
+				0CAFAFE71F39E04C007EBB26 /* Circle.swift in Sources */,
+				0CAFAFDE1F39DF6C007EBB26 /* TimerView.swift in Sources */,
 				0CAFAFAC1F39DEF1007EBB26 /* ViewController.swift in Sources */,
+				0CAFAFE31F39DFDA007EBB26 /* NSShadowExtension.swift in Sources */,
 				0CAFAFAA1F39DEF1007EBB26 /* AppDelegate.swift in Sources */,
+				0CAFAFE51F39E001007EBB26 /* Weather.swift in Sources */,
+				0CAFAFE11F39DFB6007EBB26 /* UIColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
