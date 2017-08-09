@@ -120,7 +120,7 @@ class TimerView: UIView
         let dd = dateFormatter.shortWeekdaySymbols[Calendar.current.component(.weekday, from: now)-1]
         dateFormatter.setLocalizedDateFormatFromTemplate(dateFormat) // set template after setting locale
         let monthAndDate = dateFormatter.string(from: now)
-        
+         
         
         myDate.text = dd+", "+monthAndDate
         myDate.attributedText = NSShadow.getShadow(myDate.text!,1,(myDate.frame.size.height+myDate.frame.size.height*0.5)*0.1)
