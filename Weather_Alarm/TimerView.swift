@@ -16,8 +16,6 @@ class TimerView: UIView
     var hourAmPm : UILabel!
     var myDate : UILabel!
     var alarmImage = UIImageView()
-    var alarmImageHolder = UIView()
-    
     
     override init(frame: CGRect)
     {
@@ -64,19 +62,9 @@ class TimerView: UIView
         
         myDate.font = UIFont.boldSystemFont(ofSize: myDate.font.pointSize)
         
-        
-        
-//        let imageName = "alarm"
-//        let image :UIImage = UIImage()
+
         alarmImage = UIImageView(image: #imageLiteral(resourceName: "alarm"))
-        //alarmImage.image?.resizableImage(withCapInsets: )
-       // alarmImage = [UIImage imageWithCGImage [alarmImage] scale:50/800 orientation:UIImageOrientationUp];
         alarmImage.contentMode =  UIViewContentMode.scaleAspectFit
-        
-        
-//        alarmImageHolder.backgroundColor = UIColor.fadedBlack  
-//        alarmImageHolder.addSubview(alarmImage)
-        
         
         updatetime()
         
@@ -97,8 +85,6 @@ class TimerView: UIView
         super.draw(rect)
         
         time.font = UIFont.systemFont(ofSize: time.frame.size.height)
-        //.resizableImageWithCapInsets
-        // time.font = UIFont(name: "Optima-ExtraBlack", size: time.font.pointSize)
         time.font = UIFont.boldSystemFont(ofSize: time.font.pointSize)
     }
     
@@ -118,20 +104,10 @@ class TimerView: UIView
         
         myDate.frame = CGRect(x: 0, y: time.frame.origin.y+time.frame.size.height, width: self.frame.width, height: self.frame.size.height*0.2)
         
-//        alarmImageHolder.frame = CGRect(x: time.frame.size.width+time.frame.origin.x, y: year.frame.size.height+time.frame.size.height*0.2, width: self.frame.width*0.2, height: time.frame.size.height*0.33)
-        
-        // alarmImage.frame = CGRect(x: (alarmImageHolder.frame.size.width*0.5 - self.frame.width*0.1), y: (alarmImageHolder.frame.size.height*0.5 - time.frame.size.height*0.165), width: alarmImageHolder.frame.width*0.8, height: alarmImageHolder.frame.size.height*0.8)
-        
-        
         alarmImage.frame = CGRect(x: time.frame.size.width+time.frame.origin.x, y: year.frame.size.height+time.frame.size.height*0.2, width: self.frame.width*0.2, height: time.frame.size.height*0.33)
 
-            //CGRect(x: 0, y: 0, width: alarmImageHolder.frame.width*0.5, height: alarmImageHolder.frame.size.height*0.5)
-        
-        //alarmImage.center = CGPoint(x: alarmImageHolder.frame.size.width*0.5 ,y: alarmImageHolder.frame.size.height*0.6)
-        
         hourAmPm.frame = CGRect(x: time.frame.size.width+time.frame.origin.x, y: alarmImage.frame.origin.y+alarmImage.frame.size.height, width: alarmImage.frame.size.width, height: time.frame.size.height*0.33 )
         
-        //CGRect(x: time.frame.size.width+time.frame.origin.x, y: alarmImageHolder.frame.origin.y+alarmImageHolder.frame.size.height, width: alarmImageHolder.frame.size.width, height: time.frame.size.height*0.33 )
         
     }
     
@@ -140,9 +116,9 @@ class TimerView: UIView
     {
         let now = Date()
         let dateFormatter = DateFormatter()
-        
+        let dateFormat = "MMMMd"
         let dd = dateFormatter.shortWeekdaySymbols[Calendar.current.component(.weekday, from: now)-1]
-        dateFormatter.setLocalizedDateFormatFromTemplate("MMMMd") // set template after setting locale
+        dateFormatter.setLocalizedDateFormatFromTemplate(dateFormat) // set template after setting locale
         let monthAndDate = dateFormatter.string(from: now)
         
         
@@ -193,27 +169,6 @@ class TimerView: UIView
         
     }
     
-    func heightForView(text:String, font:UIFont, width:CGFloat) -> CGFloat
-    {
-        let label:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
-        label.numberOfLines = 0
-        label.lineBreakMode = NSLineBreakMode.byWordWrapping
-        label.font = font
-        label.text = text
-        label.sizeToFit()
         
-        return label.frame.height
-    }
-    
-    func dynamicHeight(ofLabel label:UILabel, forText text:String) -> CGFloat
-    {
-        label.frame.size.height = CGFloat.greatestFiniteMagnitude
-        label.numberOfLines = 0
-        label.lineBreakMode = NSLineBreakMode.byWordWrapping
-        label.sizeToFit()
-        return label.frame.height
-    }
-    
-    
 }
 

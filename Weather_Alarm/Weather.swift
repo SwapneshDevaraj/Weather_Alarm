@@ -92,16 +92,13 @@ class Weather: UIView,CLLocationManagerDelegate
     {
         super.layoutSubviews()
         
-        //   let tempWidth = (self.frame.size.width*0.35)
-        //  let tempHeight = (self.frame.size.height*0.65)
-        
         temp.frame = CGRect(x: (self.frame.size.width*0.5)-((self.frame.size.width*0.35)*0.5), y: 0, width: self.frame.size.width*0.35, height:(self.frame.size.height*0.50) )
         
         maxTemp.frame = CGRect(x: 0, y: temp.frame.origin.y+(self.frame.size.height*0.65)*0.1, width: (self.frame.size.width*0.35)*0.75, height:(self.frame.size.height*0.65)*0.75 )
         
         minTemp.frame = CGRect(x: self.frame.size.width-(self.frame.size.width*0.35)*0.75, y: temp.frame.origin.y+(self.frame.size.height*0.65)*0.1, width: (self.frame.size.width*0.35)*0.75, height:(self.frame.size.height*0.65)*0.75 )
         
-        location.frame = CGRect(x: self.frame.size.width*0.5 - self.frame.size.width*0.25, y: minTemp.frame.origin.y+minTemp.frame.size.height, width: self.frame.size.width*0.5, height:self.frame.size.height*0.30 )
+        location.frame = CGRect(x: 0, y: minTemp.frame.origin.y+minTemp.frame.size.height, width: self.frame.size.width, height:self.frame.size.height*0.30 )
         
         
         
@@ -124,7 +121,6 @@ class Weather: UIView,CLLocationManagerDelegate
         location.font = UIFont.systemFont(ofSize: location.frame.size.height)
         location.font = UIFont.boldSystemFont(ofSize: location.font.pointSize)
         
-        //.resizableImageWithCapInsets
     }
     
     
