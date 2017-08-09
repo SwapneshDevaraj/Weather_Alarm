@@ -42,7 +42,7 @@ class TimerView: UIView
         time.adjustsFontSizeToFitWidth = true;
         time.textColor = UIColor.myGrey
         time.textAlignment = .right
-        //time.font = UIFont.boldSystemFont(ofSize: time.font.pointSize)
+    
         
         
         
@@ -66,13 +66,16 @@ class TimerView: UIView
         
         
         
-        let imageName = "alarm"
-        let image = UIImage(named: imageName)
-        alarmImage = UIImageView(image: image!)
-        //alarmImage.image.resizableImageWithCapInsets
+//        let imageName = "alarm"
+//        let image :UIImage = UIImage()
+        alarmImage = UIImageView(image: #imageLiteral(resourceName: "alarm"))
+        //alarmImage.image?.resizableImage(withCapInsets: )
+       // alarmImage = [UIImage imageWithCGImage [alarmImage] scale:50/800 orientation:UIImageOrientationUp];
+        alarmImage.contentMode =  UIViewContentMode.scaleAspectFit
         
-        alarmImageHolder.backgroundColor = UIColor.fadedBlack  
-        alarmImageHolder.addSubview(alarmImage)
+        
+//        alarmImageHolder.backgroundColor = UIColor.fadedBlack  
+//        alarmImageHolder.addSubview(alarmImage)
         
         
         updatetime()
@@ -82,7 +85,7 @@ class TimerView: UIView
         self.addSubview(time)
         self.addSubview(hourAmPm)
         self.addSubview(myDate)
-        self.addSubview(alarmImageHolder)
+        self.addSubview(alarmImage)
         
         
         
@@ -115,16 +118,20 @@ class TimerView: UIView
         
         myDate.frame = CGRect(x: 0, y: time.frame.origin.y+time.frame.size.height, width: self.frame.width, height: self.frame.size.height*0.2)
         
-        alarmImageHolder.frame = CGRect(x: time.frame.size.width+time.frame.origin.x, y: year.frame.size.height+time.frame.size.height*0.2, width: self.frame.width*0.2, height: time.frame.size.height*0.33)
+//        alarmImageHolder.frame = CGRect(x: time.frame.size.width+time.frame.origin.x, y: year.frame.size.height+time.frame.size.height*0.2, width: self.frame.width*0.2, height: time.frame.size.height*0.33)
         
         // alarmImage.frame = CGRect(x: (alarmImageHolder.frame.size.width*0.5 - self.frame.width*0.1), y: (alarmImageHolder.frame.size.height*0.5 - time.frame.size.height*0.165), width: alarmImageHolder.frame.width*0.8, height: alarmImageHolder.frame.size.height*0.8)
         
         
-        alarmImage.frame = CGRect(x: 0, y: 0, width: alarmImageHolder.frame.width*0.5, height: alarmImageHolder.frame.size.height*0.5)
+        alarmImage.frame = CGRect(x: time.frame.size.width+time.frame.origin.x, y: year.frame.size.height+time.frame.size.height*0.2, width: self.frame.width*0.2, height: time.frame.size.height*0.33)
+
+            //CGRect(x: 0, y: 0, width: alarmImageHolder.frame.width*0.5, height: alarmImageHolder.frame.size.height*0.5)
         
-        alarmImage.center = CGPoint(x: alarmImageHolder.frame.size.width*0.5 ,y: alarmImageHolder.frame.size.height*0.6)
+        //alarmImage.center = CGPoint(x: alarmImageHolder.frame.size.width*0.5 ,y: alarmImageHolder.frame.size.height*0.6)
         
-        hourAmPm.frame = CGRect(x: time.frame.size.width+time.frame.origin.x, y: alarmImageHolder.frame.origin.y+alarmImageHolder.frame.size.height, width: alarmImageHolder.frame.size.width, height: time.frame.size.height*0.33 )
+        hourAmPm.frame = CGRect(x: time.frame.size.width+time.frame.origin.x, y: alarmImage.frame.origin.y+alarmImage.frame.size.height, width: alarmImage.frame.size.width, height: time.frame.size.height*0.33 )
+        
+        //CGRect(x: time.frame.size.width+time.frame.origin.x, y: alarmImageHolder.frame.origin.y+alarmImageHolder.frame.size.height, width: alarmImageHolder.frame.size.width, height: time.frame.size.height*0.33 )
         
     }
     
