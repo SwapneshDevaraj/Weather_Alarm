@@ -16,6 +16,7 @@ class Weather: UIView,CLLocationManagerDelegate
     var minTemp = UILabel()
     var maxTemp = UILabel()
     var location = UILabel()
+    var line = UIView()
     
     private var lat : Double = 0.0
     private var lon : Double = 0.0
@@ -29,7 +30,7 @@ class Weather: UIView,CLLocationManagerDelegate
         
         self.backgroundColor = UIColor.fadedBlack
         
-        self.getLocation()
+          Timer.scheduledTimer(timeInterval: 1800, target: self, selector: #selector(self.getLocation), userInfo: nil, repeats: true)
         
         //temp
         
@@ -151,7 +152,7 @@ class Weather: UIView,CLLocationManagerDelegate
                         do
                         {
                             let weatherJson = try JSONSerialization.jsonObject(with: data!) as! [String:Any]
-                            
+                            print(weatherJson)
                             let currentConditions = weatherJson["main"] as! [String:Any]
                             print(currentConditions)
                             DispatchQueue.main.sync

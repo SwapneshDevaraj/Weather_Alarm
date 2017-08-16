@@ -109,7 +109,7 @@ class TimerView: UIView
         hourAmPm.frame = CGRect(x: time.frame.size.width+time.frame.origin.x, y: alarmImage.frame.origin.y+alarmImage.frame.size.height, width: alarmImage.frame.size.width, height: time.frame.size.height*0.33 )
         
         
-    }
+    }   
     
     
     func updatetime()

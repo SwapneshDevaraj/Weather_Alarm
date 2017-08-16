@@ -25,7 +25,7 @@ class Circle: UIView
         let darkBlur = UIBlurEffect(style: UIBlurEffectStyle.dark)
         let blurView = UIVisualEffectView(effect: darkBlur)
         
-        self.backgroundColor = .clear
+       
         
         blurView.frame = circle.bounds
         
@@ -40,8 +40,6 @@ class Circle: UIView
     override func layoutSubviews()
     {
         super.layoutSubviews()
-        
-        
         
         circle.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.width)
         circle.layer.cornerRadius = (circle.frame.width)/2
