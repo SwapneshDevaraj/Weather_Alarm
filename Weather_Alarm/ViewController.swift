@@ -11,45 +11,59 @@ import UIKit
 class ViewController: UIViewController
 {
     
-    var schedular = Timer()
-    var circle = BaseCircle()
-    
+//    var schedular = Timer()
+//    var circle = BaseCircle()
+    var cp = CirclePath()
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
     }
     
-    
-    
-    
-    override func viewWillLayoutSubviews()
+    func setAlarm()
     {
-        super.viewWillLayoutSubviews()
-        //
-        //        circle.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.width)
-        //        circle.layer.cornerRadius = (circle.frame.width)/2
-        //        circle.center = CGPoint(x: self.view.frame.size.width*0.5 ,y: self.view.frame.size.height*0.5)
+        let days = cp.days
+        let buttonArr = [days.sunButton, days.monButton, days.tueButton, days.wedButton, days.thurButton, days.friButton, days.satButton]
         
-        if UIDevice.current.orientation.isLandscape
+        
+        let hour = (PowerButton.timeLabel.text ?? "00")
+        let min = (PowerButton.time2Label.text ?? "00")
+        
+        var time = ""
+        if cp.powerButton.ampmButton.isOn
         {
-            print("Landscape")
-            circle.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.height, height: self.view.frame.size.height)
-            circle.layer.cornerRadius = (circle.frame.height)/2
-            circle.center = CGPoint(x: self.view.frame.size.width*0.5 ,y: self.view.frame.size.height*0.5)
-            
-            
-        } else
-        {
-            print("Portrait")
-            circle.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.width)
-            circle.layer.cornerRadius = (circle.frame.width)/2
-            circle.center = CGPoint(x: self.view.frame.size.width*0.5 ,y: self.view.frame.size.height*0.5)
+            time = "AM"
+        }
+        else{
+            time = "PM"
+        }
+        
+        
+        var alarmMsg = "\(hour) \(min) \(time) \n"
+        
+        for btn in buttonArr {
+            if btn.btnSelected {
+                if let sel = btn.titleLabel?.text
+                {
+                    alarmMsg += "\(sel) "
+                }
+            }
+            else{
+                
+            }
             
         }
         
         
+        print(alarmMsg)
+        
+        printAlert(msg: alarmMsg)
+        alarmMsg = ""
+        
     }
+
+    
+    
     
 }
 
