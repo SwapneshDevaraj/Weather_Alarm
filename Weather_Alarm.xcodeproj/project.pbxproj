@@ -7,27 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0C589D1C1F3B150D009F8A0F /* CirclePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C589D1B1F3B150D009F8A0F /* CirclePath.swift */; };
-		0C589D1E1F3B1535009F8A0F /* MinuteCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C589D1D1F3B1535009F8A0F /* MinuteCircle.swift */; };
-		0C589D201F3B1556009F8A0F /* HourCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C589D1F1F3B1556009F8A0F /* HourCircle.swift */; };
-		0C589D221F3B1575009F8A0F /* Days.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C589D211F3B1575009F8A0F /* Days.swift */; };
-		0C589D241F3B1598009F8A0F /* PowerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C589D231F3B1598009F8A0F /* PowerButton.swift */; };
-		0C589D271F3B1633009F8A0F /* ClockFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C589D261F3B1633009F8A0F /* ClockFace.swift */; };
-		0C589D291F3B165B009F8A0F /* XMCircleGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C589D281F3B165B009F8A0F /* XMCircleGestureRecognizer.swift */; };
-		0C589D2B1F3B169E009F8A0F /* CGFloatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C589D2A1F3B169E009F8A0F /* CGFloatExtension.swift */; };
 		0CAFAFAA1F39DEF1007EBB26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAFAFA91F39DEF1007EBB26 /* AppDelegate.swift */; };
-		0CAFAFAC1F39DEF1007EBB26 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAFAFAB1F39DEF1007EBB26 /* ViewController.swift */; };
 		0CAFAFAF1F39DEF1007EBB26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CAFAFAD1F39DEF1007EBB26 /* Main.storyboard */; };
 		0CAFAFB11F39DEF1007EBB26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CAFAFB01F39DEF1007EBB26 /* Assets.xcassets */; };
 		0CAFAFB41F39DEF1007EBB26 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CAFAFB21F39DEF1007EBB26 /* LaunchScreen.storyboard */; };
 		0CAFAFBF1F39DEF1007EBB26 /* Weather_AlarmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAFAFBE1F39DEF1007EBB26 /* Weather_AlarmTests.swift */; };
 		0CAFAFCA1F39DEF1007EBB26 /* Weather_AlarmUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAFAFC91F39DEF1007EBB26 /* Weather_AlarmUITests.swift */; };
 		0CAFAFDE1F39DF6C007EBB26 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAFAFDD1F39DF6C007EBB26 /* TimerView.swift */; };
-		0CAFAFE11F39DFB6007EBB26 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAFAFE01F39DFB6007EBB26 /* UIColorExtension.swift */; };
-		0CAFAFE31F39DFDA007EBB26 /* NSShadowExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAFAFE21F39DFDA007EBB26 /* NSShadowExtension.swift */; };
 		0CAFAFE51F39E001007EBB26 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAFAFE41F39E001007EBB26 /* Weather.swift */; };
 		0CAFAFE71F39E04C007EBB26 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAFAFE61F39E04C007EBB26 /* Circle.swift */; };
 		0CAFAFE91F39E08F007EBB26 /* BaseCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAFAFE81F39E08F007EBB26 /* BaseCircle.swift */; };
+		7F777E551F568AE500B9376F /* ClockFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F777E541F568AE500B9376F /* ClockFace.swift */; };
+		7F777E591F568B0700B9376F /* CirclePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F777E581F568B0700B9376F /* CirclePath.swift */; };
+		7F777E5B1F568B0B00B9376F /* MinuteCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F777E5A1F568B0B00B9376F /* MinuteCircle.swift */; };
+		7F777E5F1F568B1500B9376F /* HourCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F777E5E1F568B1500B9376F /* HourCircle.swift */; };
+		7F777E611F568B1B00B9376F /* Days.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F777E601F568B1B00B9376F /* Days.swift */; };
+		7F777E631F568B2C00B9376F /* PowerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F777E621F568B2C00B9376F /* PowerButton.swift */; };
+		7F777E651F568B3000B9376F /* ReturnButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F777E641F568B3000B9376F /* ReturnButton.swift */; };
+		7F777E671F568B4400B9376F /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F777E661F568B4400B9376F /* UIColorExtension.swift */; };
+		7F777E691F568B4800B9376F /* NSShadowExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F777E681F568B4800B9376F /* NSShadowExtension.swift */; };
+		7F777E6B1F568B4C00B9376F /* CGFloatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F777E6A1F568B4C00B9376F /* CGFloatExtension.swift */; };
+		7F777E6D1F568B5100B9376F /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F777E6C1F568B5100B9376F /* UIButtonExtension.swift */; };
+		7F777E6F1F568B5B00B9376F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F777E6E1F568B5B00B9376F /* ViewController.swift */; };
+		7F777E711F568BE300B9376F /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F777E701F568BE300B9376F /* Shapes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,17 +50,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0C589D1B1F3B150D009F8A0F /* CirclePath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CirclePath.swift; sourceTree = "<group>"; };
-		0C589D1D1F3B1535009F8A0F /* MinuteCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinuteCircle.swift; sourceTree = "<group>"; };
-		0C589D1F1F3B1556009F8A0F /* HourCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourCircle.swift; sourceTree = "<group>"; };
-		0C589D211F3B1575009F8A0F /* Days.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Days.swift; sourceTree = "<group>"; };
-		0C589D231F3B1598009F8A0F /* PowerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerButton.swift; sourceTree = "<group>"; };
-		0C589D261F3B1633009F8A0F /* ClockFace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockFace.swift; sourceTree = "<group>"; };
-		0C589D281F3B165B009F8A0F /* XMCircleGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMCircleGestureRecognizer.swift; sourceTree = "<group>"; };
-		0C589D2A1F3B169E009F8A0F /* CGFloatExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGFloatExtension.swift; sourceTree = "<group>"; };
 		0CAFAFA61F39DEF1007EBB26 /* Weather_Alarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather_Alarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CAFAFA91F39DEF1007EBB26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0CAFAFAB1F39DEF1007EBB26 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0CAFAFAE1F39DEF1007EBB26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0CAFAFB01F39DEF1007EBB26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CAFAFB31F39DEF1007EBB26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -70,11 +63,22 @@
 		0CAFAFC91F39DEF1007EBB26 /* Weather_AlarmUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather_AlarmUITests.swift; sourceTree = "<group>"; };
 		0CAFAFCB1F39DEF1007EBB26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CAFAFDD1F39DF6C007EBB26 /* TimerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
-		0CAFAFE01F39DFB6007EBB26 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
-		0CAFAFE21F39DFDA007EBB26 /* NSShadowExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSShadowExtension.swift; sourceTree = "<group>"; };
 		0CAFAFE41F39E001007EBB26 /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		0CAFAFE61F39E04C007EBB26 /* Circle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		0CAFAFE81F39E08F007EBB26 /* BaseCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCircle.swift; sourceTree = "<group>"; };
+		7F777E541F568AE500B9376F /* ClockFace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockFace.swift; sourceTree = "<group>"; };
+		7F777E581F568B0700B9376F /* CirclePath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CirclePath.swift; sourceTree = "<group>"; };
+		7F777E5A1F568B0B00B9376F /* MinuteCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinuteCircle.swift; sourceTree = "<group>"; };
+		7F777E5E1F568B1500B9376F /* HourCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourCircle.swift; sourceTree = "<group>"; };
+		7F777E601F568B1B00B9376F /* Days.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Days.swift; sourceTree = "<group>"; };
+		7F777E621F568B2C00B9376F /* PowerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerButton.swift; sourceTree = "<group>"; };
+		7F777E641F568B3000B9376F /* ReturnButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReturnButton.swift; sourceTree = "<group>"; };
+		7F777E661F568B4400B9376F /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		7F777E681F568B4800B9376F /* NSShadowExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSShadowExtension.swift; sourceTree = "<group>"; };
+		7F777E6A1F568B4C00B9376F /* CGFloatExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGFloatExtension.swift; sourceTree = "<group>"; };
+		7F777E6C1F568B5100B9376F /* UIButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
+		7F777E6E1F568B5B00B9376F /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7F777E701F568BE300B9376F /* Shapes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,11 +109,13 @@
 		0C589D1A1F3B1438009F8A0F /* AlarmView */ = {
 			isa = PBXGroup;
 			children = (
-				0C589D1B1F3B150D009F8A0F /* CirclePath.swift */,
-				0C589D1D1F3B1535009F8A0F /* MinuteCircle.swift */,
-				0C589D1F1F3B1556009F8A0F /* HourCircle.swift */,
-				0C589D211F3B1575009F8A0F /* Days.swift */,
-				0C589D231F3B1598009F8A0F /* PowerButton.swift */,
+				7F777E581F568B0700B9376F /* CirclePath.swift */,
+				7F777E5A1F568B0B00B9376F /* MinuteCircle.swift */,
+				7F777E5E1F568B1500B9376F /* HourCircle.swift */,
+				7F777E701F568BE300B9376F /* Shapes.swift */,
+				7F777E601F568B1B00B9376F /* Days.swift */,
+				7F777E621F568B2C00B9376F /* PowerButton.swift */,
+				7F777E641F568B3000B9376F /* ReturnButton.swift */,
 			);
 			name = AlarmView;
 			sourceTree = "<group>";
@@ -117,8 +123,7 @@
 		0C589D251F3B1615009F8A0F /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				0C589D261F3B1633009F8A0F /* ClockFace.swift */,
-				0C589D281F3B165B009F8A0F /* XMCircleGestureRecognizer.swift */,
+				7F777E541F568AE500B9376F /* ClockFace.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -151,7 +156,7 @@
 				0CAFAFDF1F39DF92007EBB26 /* Extensions */,
 				0CAFAFDC1F39DF45007EBB26 /* WeatherView */,
 				0CAFAFA91F39DEF1007EBB26 /* AppDelegate.swift */,
-				0CAFAFAB1F39DEF1007EBB26 /* ViewController.swift */,
+				7F777E6E1F568B5B00B9376F /* ViewController.swift */,
 				0CAFAFAD1F39DEF1007EBB26 /* Main.storyboard */,
 				0CAFAFB01F39DEF1007EBB26 /* Assets.xcassets */,
 				0CAFAFB21F39DEF1007EBB26 /* LaunchScreen.storyboard */,
@@ -192,9 +197,10 @@
 		0CAFAFDF1F39DF92007EBB26 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				0CAFAFE01F39DFB6007EBB26 /* UIColorExtension.swift */,
-				0CAFAFE21F39DFDA007EBB26 /* NSShadowExtension.swift */,
-				0C589D2A1F3B169E009F8A0F /* CGFloatExtension.swift */,
+				7F777E661F568B4400B9376F /* UIColorExtension.swift */,
+				7F777E681F568B4800B9376F /* NSShadowExtension.swift */,
+				7F777E6A1F568B4C00B9376F /* CGFloatExtension.swift */,
+				7F777E6C1F568B5100B9376F /* UIButtonExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -334,22 +340,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F777E631F568B2C00B9376F /* PowerButton.swift in Sources */,
+				7F777E671F568B4400B9376F /* UIColorExtension.swift in Sources */,
 				0CAFAFE91F39E08F007EBB26 /* BaseCircle.swift in Sources */,
-				0C589D1E1F3B1535009F8A0F /* MinuteCircle.swift in Sources */,
-				0C589D291F3B165B009F8A0F /* XMCircleGestureRecognizer.swift in Sources */,
+				7F777E611F568B1B00B9376F /* Days.swift in Sources */,
+				7F777E5F1F568B1500B9376F /* HourCircle.swift in Sources */,
 				0CAFAFE71F39E04C007EBB26 /* Circle.swift in Sources */,
-				0C589D271F3B1633009F8A0F /* ClockFace.swift in Sources */,
 				0CAFAFDE1F39DF6C007EBB26 /* TimerView.swift in Sources */,
-				0C589D1C1F3B150D009F8A0F /* CirclePath.swift in Sources */,
-				0CAFAFAC1F39DEF1007EBB26 /* ViewController.swift in Sources */,
-				0CAFAFE31F39DFDA007EBB26 /* NSShadowExtension.swift in Sources */,
+				7F777E6D1F568B5100B9376F /* UIButtonExtension.swift in Sources */,
+				7F777E551F568AE500B9376F /* ClockFace.swift in Sources */,
+				7F777E6F1F568B5B00B9376F /* ViewController.swift in Sources */,
+				7F777E651F568B3000B9376F /* ReturnButton.swift in Sources */,
+				7F777E711F568BE300B9376F /* Shapes.swift in Sources */,
+				7F777E591F568B0700B9376F /* CirclePath.swift in Sources */,
+				7F777E5B1F568B0B00B9376F /* MinuteCircle.swift in Sources */,
+				7F777E691F568B4800B9376F /* NSShadowExtension.swift in Sources */,
 				0CAFAFAA1F39DEF1007EBB26 /* AppDelegate.swift in Sources */,
-				0C589D201F3B1556009F8A0F /* HourCircle.swift in Sources */,
+				7F777E6B1F568B4C00B9376F /* CGFloatExtension.swift in Sources */,
 				0CAFAFE51F39E001007EBB26 /* Weather.swift in Sources */,
-				0C589D241F3B1598009F8A0F /* PowerButton.swift in Sources */,
-				0C589D221F3B1575009F8A0F /* Days.swift in Sources */,
-				0C589D2B1F3B169E009F8A0F /* CGFloatExtension.swift in Sources */,
-				0CAFAFE11F39DFB6007EBB26 /* UIColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
