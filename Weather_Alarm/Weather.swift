@@ -30,7 +30,7 @@ class Weather: UIView,CLLocationManagerDelegate
         
         self.backgroundColor = UIColor.fadedBlack
         
-          Timer.scheduledTimer(timeInterval: 1800, target: self, selector: #selector(self.getLocation), userInfo: nil, repeats: true)
+          Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.getLocation), userInfo: nil, repeats: true)
         
         //temp
         
