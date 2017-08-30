@@ -1,24 +1,23 @@
 //
 //  ClockFace.swift
-//  Weather_Alarm
+//  RotatingCircle
 //
-//  Created by IOS1 on 09/08/17.
-//  Copyright © 2017 HighPeak. All rights reserved.
+//  Created by user1 on 8/7/17.
+//  Copyright © 2017 user1. All rights reserved.
 //
 
-import Foundation
 import UIKit
 class ClockFace
 {
-    
-    class func degree2radian(a:CGFloat)->CGFloat
+   static var count = 0
+   class func degree2radian(a:CGFloat)->CGFloat
     {
         let b = CGFloat(Double.pi) * a/180
         return b
     }
     
     
-    class func circleCircumferencePoints(sides:Int ,x:CGFloat ,y:CGFloat ,radius:CGFloat ,adjustment:CGFloat=0) -> [CGPoint]
+   class func circleCircumferencePoints(sides:Int ,x:CGFloat ,y:CGFloat ,radius:CGFloat ,adjustment:CGFloat=0) -> [CGPoint]
     {
         let angle = degree2radian(a: 360/CGFloat(sides))
         let cx = x //x origin
@@ -37,7 +36,7 @@ class ClockFace
         return points
     }
     
-    class func secondMarkers(ctx:CGContext ,x:CGFloat ,y:CGFloat ,radius:CGFloat ,sides:Int ,color:UIColor)
+   class func secondMarkers(ctx:CGContext ,x:CGFloat ,y:CGFloat ,radius:CGFloat ,sides:Int ,color:UIColor)
     {
         // retrieve points
         let points = circleCircumferencePoints(sides: sides, x: x, y: y, radius: radius)
@@ -68,41 +67,44 @@ class ClockFace
         
     }
     
-    class func drawText(rect:CGRect ,ctx:CGContext ,x:CGFloat ,y:CGFloat ,radius:CGFloat ,sides:Int ,color:UIColor)
+   class func drawText(rect:CGRect ,ctx:CGContext ,x:CGFloat ,y:CGFloat ,radius:CGFloat ,sides:Int ,color:UIColor)
     {
+        
         ctx.translateBy(x: 0.0, y: rect.height)
         ctx.scaleBy(x: 1.0, y: -1.0)
         //dictates on how inset the ring of numbers will be
         let inset:CGFloat = radius/4.5
         //an adjustment of 270 degrees to position numbers correctly
-        let points = circleCircumferencePoints(sides: sides, x: x, y: y, radius: radius-inset, adjustment: 270)
+        let points = circleCircumferencePoints(sides: sides, x: x, y: y, radius: radius-inset, adjustment: 180)
         
         for p in points.enumerated()
         {
             if p.offset > 0 {
                 //default font of iphone
-                let aFont = UIFont(name: "Helvetica Neue", size: radius/7)?.withSize(15)
+                let aFont = UIFont(name: "HelveticaNeue", size: radius/7)?.withSize(12)
                 
                 // create a dictionary of attributes to be applied to the string
                 let attr:CFDictionary = [NSFontAttributeName:aFont! ,NSForegroundColorAttributeName:UIColor.white] as CFDictionary
+//                if radius = 
+//                {
                 let string = String(format: "%02d",p.offset as CVarArg)
                 // create the attributed string
                 let text = CFAttributedStringCreate(nil, string as CFString, attr)
-                
-                // create the line of text
-                let line = CTLineCreateWithAttributedString(text!)
-                //retrive bounds
-                let bounds = CTLineGetBoundsWithOptions(line, CTLineBoundsOptions.useGlyphPathBounds)
-                //set the line width to stroke the text with
-                ctx.setLineWidth(1.5)
-                // set the drawing mode to stroke
-                ctx.setTextDrawingMode(CGTextDrawingMode.stroke)
-                // Set text position and draw the line into the graphics context, text length and height is adjusted for
-                let xn = p.element.x - bounds.width/2
-                let yn = p.element.y - bounds.midY
-                ctx.textPosition = CGPoint(x: xn, y: yn)
-                //draw the line of text
-                CTLineDraw(line, ctx)
+                    let line = CTLineCreateWithAttributedString(text!)
+                    //retrive bounds
+                    let bounds = CTLineGetBoundsWithOptions(line, CTLineBoundsOptions.useGlyphPathBounds)
+                    //set the line width to stroke the text with
+                    ctx.setLineWidth(1.5)
+                    // set the drawing mode to stroke
+                    ctx.setTextDrawingMode(CGTextDrawingMode.stroke)
+                    // Set text position and draw the line into the graphics context, text length and height is adjusted for
+                    let xn = p.element.x - bounds.width/2
+                    let yn = p.element.y - bounds.midY
+                    ctx.textPosition = CGPoint(x: xn, y: yn)
+                    //draw the line of text
+                    CTLineDraw(line, ctx)
+
+
             }
         }
     }
@@ -114,13 +116,13 @@ class ClockFace
         //dictates on how inset the ring of numbers will be
         let inset:CGFloat = radius/4.5
         //an adjustment of 270 degrees to position numbers correctly
-        let points = circleCircumferencePoints(sides: sides, x: x, y: y, radius: radius-inset, adjustment: 270)
-        var count = 0
+        let points = circleCircumferencePoints(sides: sides, x: x, y: y, radius: radius-inset, adjustment: 210)
+        
         for p in points.enumerated()
         {
             if p.offset > 0 {
                 //default font of iphone
-                let aFont = UIFont(name: "Helvetica Neue", size: radius/7)?.withSize(15)
+                let aFont = UIFont(name: "HelveticaNeue", size: radius/7)?.withSize(12)
                 
                 // create a dictionary of attributes to be applied to the string
                 let attr:CFDictionary = [NSFontAttributeName:aFont! ,NSForegroundColorAttributeName:UIColor.white] as CFDictionary
@@ -147,5 +149,5 @@ class ClockFace
         }
     }
     
-    
+
 }
