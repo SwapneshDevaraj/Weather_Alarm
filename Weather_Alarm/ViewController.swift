@@ -18,8 +18,6 @@ class ViewController: UIViewController
     {
         super.viewDidLoad()
         
-        circle.start()
-        
     }
     
     
