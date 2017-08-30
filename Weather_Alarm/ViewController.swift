@@ -18,12 +18,6 @@ class ViewController: UIViewController
     {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "bImage"))
-        
-        self.view.addSubview(circle)
-        
-        
-        
         circle.start()
         
     }
