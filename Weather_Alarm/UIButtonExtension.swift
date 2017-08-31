@@ -14,6 +14,8 @@ class ButtonProp : UIButton
 
     var isOn :Bool = false
     
+  let alarmNotification = AlarmNotification()
+    
     var btnSelected = false
     func toggle() -> Bool
     {
@@ -30,13 +32,21 @@ class ButtonProp : UIButton
         layer.strokeColor = color
         sender.setTitle(btnTitle, for: UIControlState.selected)
         sender.setTitleColor(titleColor, for: .normal)
-//        print("click = \(sender.tag)")
+
         
         if color == UIColor.cyan.cgColor
         {
             btnSelected = true
+            alarmNotification.setAlarmDays(button: sender as! ButtonProp, bool: true)
+            
+        }
+        else{
+            alarmNotification.setAlarmDays(button: sender as! ButtonProp, bool: false)
+            
         }
     }
+    
+    
     
     
     func setAmPm(sender:UIButton, bool:Bool)   {

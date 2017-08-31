@@ -23,6 +23,7 @@ class CirclePath: UIView {
     var powerButton = PowerButton()
     var days = Days()
     var shapes = Shapes()
+    let alarmNotification = AlarmNotification()
     
     
     var angleDifference: CGFloat?
@@ -73,6 +74,8 @@ class CirclePath: UIView {
         
         
     }
+    
+
     
     
     required init?(coder aDecoder: NSCoder) {

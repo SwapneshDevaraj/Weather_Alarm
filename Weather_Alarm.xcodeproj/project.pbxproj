@@ -30,6 +30,7 @@
 		7F777E6D1F568B5100B9376F /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F777E6C1F568B5100B9376F /* UIButtonExtension.swift */; };
 		7F777E6F1F568B5B00B9376F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F777E6E1F568B5B00B9376F /* ViewController.swift */; };
 		7F777E711F568BE300B9376F /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F777E701F568BE300B9376F /* Shapes.swift */; };
+		7F833EB81F57E86B003A0454 /* AlarmNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F833EB71F57E86B003A0454 /* AlarmNotification.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		7F777E6C1F568B5100B9376F /* UIButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		7F777E6E1F568B5B00B9376F /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7F777E701F568BE300B9376F /* Shapes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
+		7F833EB71F57E86B003A0454 /* AlarmNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmNotification.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				7F777E541F568AE500B9376F /* ClockFace.swift */,
+				7F833EB71F57E86B003A0454 /* AlarmNotification.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				7F777E651F568B3000B9376F /* ReturnButton.swift in Sources */,
 				7F777E711F568BE300B9376F /* Shapes.swift in Sources */,
 				7F777E591F568B0700B9376F /* CirclePath.swift in Sources */,
+				7F833EB81F57E86B003A0454 /* AlarmNotification.swift in Sources */,
 				7F777E5B1F568B0B00B9376F /* MinuteCircle.swift in Sources */,
 				7F777E691F568B4800B9376F /* NSShadowExtension.swift in Sources */,
 				0CAFAFAA1F39DEF1007EBB26 /* AppDelegate.swift in Sources */,

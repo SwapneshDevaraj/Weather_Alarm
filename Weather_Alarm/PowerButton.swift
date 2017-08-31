@@ -27,14 +27,14 @@ class PowerButton: UIView
         self.isUserInteractionEnabled = true
 
         PowerButton.timeLabel.backgroundColor = UIColor.hexStringToUIColor(hex: "#2385D9")
-        PowerButton.timeLabel.text = "- :"
+        PowerButton.timeLabel.text = "12 :"
         PowerButton.timeLabel.textColor = UIColor.white
         PowerButton.timeLabel.textAlignment  = .right
         PowerButton.timeLabel.clipsToBounds = true
         self.addSubview(PowerButton.timeLabel)
         
         PowerButton.time2Label.backgroundColor = UIColor.hexStringToUIColor(hex: "#2385D9")
-        PowerButton.time2Label.text = "0"
+        PowerButton.time2Label.text = "00"
         PowerButton.time2Label.textColor = UIColor.white
         PowerButton.time2Label.textAlignment  = .center
         PowerButton.time2Label.clipsToBounds = true
