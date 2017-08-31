@@ -84,7 +84,7 @@ class ClockFace
                 let aFont = UIFont(name: "HelveticaNeue", size: radius/7)?.withSize(12)
                 
                 // create a dictionary of attributes to be applied to the string
-                let attr:CFDictionary = [NSFontAttributeName:aFont! ,NSForegroundColorAttributeName:UIColor.white] as CFDictionary
+                let attr:CFDictionary = [NSFontAttributeName:aFont! ,NSForegroundColorAttributeName:UIColor.myGrey] as CFDictionary
 //                if radius = 
 //                {
                 let string = String(format: "%02d",p.offset as CVarArg)
@@ -125,7 +125,7 @@ class ClockFace
                 let aFont = UIFont(name: "HelveticaNeue", size: radius/7)?.withSize(12)
                 
                 // create a dictionary of attributes to be applied to the string
-                let attr:CFDictionary = [NSFontAttributeName:aFont! ,NSForegroundColorAttributeName:UIColor.white] as CFDictionary
+                let attr:CFDictionary = [NSFontAttributeName:aFont! ,NSForegroundColorAttributeName:UIColor.myGrey] as CFDictionary
                 let string = String(format: "%02d",count as CVarArg)
                 count += 5
                 // create the attributed string

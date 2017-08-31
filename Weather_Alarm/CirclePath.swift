@@ -23,7 +23,7 @@ class CirclePath: UIView {
     var powerButton = PowerButton()
     var days = Days()
     var shapes = Shapes()
-    var returnButton = ReturnButton()
+    
     
     var angleDifference: CGFloat?
     var location:CGPoint?
@@ -67,8 +67,6 @@ class CirclePath: UIView {
         powerButton.backgroundColor = .clear
         addSubview(powerButton)
         
-        returnButton.backgroundColor = .clear
-        addSubview(returnButton)
         
         self.arr = getMyValues()
         
@@ -105,10 +103,7 @@ class CirclePath: UIView {
                 shapes.bounds = CGRect(x: 0.0, y: 0.0, width: self.bounds.size.width, height: self.bounds.size.height)
                 shapes.center = CGPoint(x: self.bounds.size.width*0.5, y: self.bounds.size.height*0.5)
                 
-                returnButton.bounds = CGRect(x: 0.0, y: 0.0, width: self.bounds.size.width*0.15, height: self.bounds.size.width*0.15)
-                returnButton.center = CGPoint(x: self.bounds.size.width*0.15, y: self.bounds.size.height*0.65)
-                returnButton.layer.cornerRadius = returnButton.bounds.size.width*0.5
-
+               
     }
   
     func getMyValues() -> [Double:Int]

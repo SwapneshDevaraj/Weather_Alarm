@@ -21,7 +21,10 @@ class TimerView: UIView
     {
         super.init(frame: frame)
         
-        self.backgroundColor = UIColor.fadedBlack
+        self.backgroundColor = UIColor.clear
+        
+        self.layer.borderColor = UIColor.clear.cgColor
+        self.layer.borderWidth = 0
         
         
         year  = UILabel()
@@ -31,6 +34,9 @@ class TimerView: UIView
         year.numberOfLines = 1;
         year.adjustsFontSizeToFitWidth = true;
         year.font = UIFont.boldSystemFont(ofSize: year.font.pointSize)
+        year.layer.borderWidth = 0
+        year.layer.borderColor = UIColor.clear.cgColor
+        
         
         
         time  = UILabel()
@@ -40,7 +46,9 @@ class TimerView: UIView
         time.adjustsFontSizeToFitWidth = true;
         time.textColor = UIColor.myGrey
         time.textAlignment = .right
-    
+        time.layer.borderWidth = 0
+        time.layer.borderColor = UIColor.clear.cgColor
+
         
         
         
@@ -51,7 +59,9 @@ class TimerView: UIView
         hourAmPm.adjustsFontSizeToFitWidth = true;
         
         hourAmPm.textAlignment = .center
-        
+        hourAmPm.layer.borderWidth = 0
+        hourAmPm.layer.borderColor = UIColor.clear.cgColor
+
         
         myDate  = UILabel()
         myDate.backgroundColor = UIColor.fadedBlack
@@ -61,11 +71,15 @@ class TimerView: UIView
         myDate.adjustsFontSizeToFitWidth = true;
         
         myDate.font = UIFont.boldSystemFont(ofSize: myDate.font.pointSize)
-        
+        myDate.layer.borderWidth = 0
+        myDate.layer.borderColor = UIColor.clear.cgColor
+
 
         alarmImage = UIImageView(image: #imageLiteral(resourceName: "alarm"))
         alarmImage.contentMode =  UIViewContentMode.scaleAspectFit
-        
+        alarmImage.layer.borderWidth = 0
+        alarmImage.layer.borderColor = UIColor.clear.cgColor
+
         updatetime()
         
         
@@ -102,14 +116,14 @@ class TimerView: UIView
         
         time.frame = CGRect(x: (self.frame.size.width*0.1)*0.5, y: year.frame.size.height, width:self.frame.width*0.7, height: self.frame.size.height*0.8)
         
-        myDate.frame = CGRect(x: 0, y: time.frame.origin.y+time.frame.size.height, width: self.frame.width, height: self.frame.size.height*0.2)
+        myDate.frame = CGRect(x: 0, y: time.frame.origin.y+time.frame.size.height, width: self.frame.width, height: self.frame.size.height*0.23)
         
         alarmImage.frame = CGRect(x: time.frame.size.width+time.frame.origin.x, y: year.frame.size.height+time.frame.size.height*0.2, width: self.frame.width*0.2, height: time.frame.size.height*0.33)
 
         hourAmPm.frame = CGRect(x: time.frame.size.width+time.frame.origin.x, y: alarmImage.frame.origin.y+alarmImage.frame.size.height, width: alarmImage.frame.size.width, height: time.frame.size.height*0.33 )
         
         
-    }
+    }   
     
     
     func updatetime()
@@ -120,7 +134,7 @@ class TimerView: UIView
         let dd = dateFormatter.shortWeekdaySymbols[Calendar.current.component(.weekday, from: now)-1]
         dateFormatter.setLocalizedDateFormatFromTemplate(dateFormat) // set template after setting locale
         let monthAndDate = dateFormatter.string(from: now)
-        
+         
         
         myDate.text = dd+", "+monthAndDate
         myDate.attributedText = NSShadow.getShadow(myDate.text!,1,(myDate.frame.size.height+myDate.frame.size.height*0.5)*0.1)
