@@ -7,29 +7,39 @@
 //
 
 import UIKit
+import UserNotifications
+import UserNotificationsUI
 
 class ViewController: UIViewController
 {
-    
-//    var schedular = Timer()
-//    var circle = BaseCircle()
+
     var cp = CirclePath()
+    let defaults:UserDefaults = UserDefaults.standard
+    var count = 0
+    
+    
+    var dateInfo = DateComponents()
+    
+
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.white
-//        
-//        self.view.addSubview(circle)
-//        circle.start()
+
         
         self.view = cp
         cp.clipsToBounds = true
         cp.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "Image"))
       
         cp.powerButton.setButton.addTarget(self, action: #selector(setAlarm), for: UIControlEvents.touchUpInside)
+        
+        print("intial \(count)")
+        
     
     }
+    
     
    
     func printAlert(msg: String)
@@ -41,31 +51,10 @@ class ViewController: UIViewController
 
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        printAlert(msg: cp.alertMsg)
-    }
     
     override func viewWillLayoutSubviews()
     {
         super.viewWillLayoutSubviews()
-        
-//        if UIDevice.current.orientation.isLandscape
-//        {
-//            print("Landscape")
-//            circle.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.height, height: self.view.frame.size.height)
-//            circle.layer.cornerRadius = (circle.frame.height)/2
-//            circle.center = CGPoint(x: self.view.frame.size.width*0.5 ,y: self.view.frame.size.height*0.5)
-//            
-//            
-//        } else
-//        {
-//            print("Portrait")
-//            circle.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.width)
-//            circle.layer.cornerRadius = (circle.frame.width)/2
-//            circle.center = CGPoint(x: self.view.frame.size.width*0.5 ,y: self.view.frame.size.height*0.5)
-//            
-//        }
-        
         
     }
     
@@ -104,13 +93,48 @@ class ViewController: UIViewController
         }
         
         
-        print(alarmMsg)
+        //print(alarmMsg)
         
         printAlert(msg: alarmMsg)
-        alarmMsg = ""
+        count += 1
+      defaults.set("\(alarmMsg)", forKey: "Alarm-\(count)")
+        print( "print the default value Alarm - \(defaults.string(forKey: "Alarm-\(count)") ?? "error")")
+
+        self.scheduleLocalNotification()
+    }
+    
+    
+
+ 
+    func scheduleLocalNotification(){
+        print("localNotification called")
+        let content = UNMutableNotificationContent()
+        content.title = NSString.localizedUserNotificationString(forKey: "Wake up!", arguments: nil)
+        content.body = NSString.localizedUserNotificationString(forKey: "Rise and shine! It's morning time!",
+                                                                arguments: nil)
+        content.sound = UNNotificationSound.default()
+        
+        dateInfo.hour = 11
+        dateInfo.minute = 21
+        // Configure the trigger for a 7am wakeup.
+        let trigerTimer = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+        
+        //let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: false)
+        
+        // Create the request object.
+        let request = UNNotificationRequest(identifier: "MorningAlarm", content: content, trigger: trigerTimer)
+        
+        //UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().add(request){(error : Error?) in
+            
+            if let theError = error {
+                                print(theError.localizedDescription)
+                            }
+        }
+
+       
         
     }
-
     
     
     
