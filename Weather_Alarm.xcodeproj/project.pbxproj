@@ -188,8 +188,8 @@
 			children = (
 				0CAFAFDD1F39DF6C007EBB26 /* TimerView.swift */,
 				0CAFAFE41F39E001007EBB26 /* Weather.swift */,
-				0CAFAFE61F39E04C007EBB26 /* Circle.swift */,
 				0CAFAFE81F39E08F007EBB26 /* BaseCircle.swift */,
+				0CAFAFE61F39E04C007EBB26 /* Circle.swift */,
 			);
 			name = WeatherView;
 			sourceTree = "<group>";
@@ -510,6 +510,7 @@
 		0CAFAFCF1F39DEF1007EBB26 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = JLY7ES5426;
@@ -525,6 +526,7 @@
 		0CAFAFD01F39DEF1007EBB26 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = JLY7ES5426;

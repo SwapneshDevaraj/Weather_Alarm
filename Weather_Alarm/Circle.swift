@@ -31,6 +31,11 @@ class Circle: UIView
         
         self.addSubview(circle)
         
+        weatherView.layer.borderWidth = 0
+        weatherView.layer.borderColor = UIColor.clear.cgColor
+        timerView.layer.borderWidth = 0
+        timerView.layer.borderColor = UIColor.clear.cgColor
+        
         circle.addSubview(weatherView)
         circle.addSubview(timerView)
         

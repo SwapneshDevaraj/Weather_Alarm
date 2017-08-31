@@ -28,11 +28,11 @@ class Weather: UIView,CLLocationManagerDelegate
     {
         super.init(frame: frame)
         
-        self.backgroundColor = UIColor.fadedBlack
+        self.backgroundColor = UIColor.clear
         
-          Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.getLocation), userInfo: nil, repeats: true)
         
-        //temp
+        getLocation()
+        Timer.scheduledTimer(timeInterval: 1800, target: self, selector: #selector(self.getLocation), userInfo: nil, repeats: true)
         
         temp.textColor = UIColor.myGrey
         
@@ -40,7 +40,10 @@ class Weather: UIView,CLLocationManagerDelegate
         temp.adjustsFontSizeToFitWidth = true;
         temp.backgroundColor = UIColor.fadedBlack
         temp.font = UIFont.boldSystemFont(ofSize: temp.font.pointSize)
-        
+        temp.layer.borderWidth = 0
+        temp.layer.borderColor = UIColor.clear.cgColor
+        temp.backgroundColor = .clear
+
         
         
         self.addSubview(temp)
@@ -51,7 +54,10 @@ class Weather: UIView,CLLocationManagerDelegate
         maxTemp.numberOfLines = 1
         maxTemp.adjustsFontSizeToFitWidth = true
         maxTemp.backgroundColor = UIColor.fadedBlack
-        
+        maxTemp.layer.borderWidth = 0
+        maxTemp.layer.borderColor = UIColor.clear.cgColor
+        maxTemp.backgroundColor = .clear
+
         
         
         self.addSubview(maxTemp)
@@ -63,7 +69,10 @@ class Weather: UIView,CLLocationManagerDelegate
         minTemp.numberOfLines = 1
         minTemp.adjustsFontSizeToFitWidth = true
         minTemp.backgroundColor = UIColor.fadedBlack
-        
+        minTemp.layer.borderWidth = 0
+        minTemp.layer.borderColor = UIColor.clear.cgColor
+        minTemp.backgroundColor = .clear
+
         self.addSubview(minTemp)
         
         //location
@@ -73,7 +82,10 @@ class Weather: UIView,CLLocationManagerDelegate
         location.adjustsFontSizeToFitWidth = true
         location.backgroundColor = UIColor.fadedBlack
         location.textAlignment = .center
-        
+        location.layer.borderWidth = 0
+        location.layer.borderColor = UIColor.clear.cgColor
+        location.backgroundColor = .clear
+
         
         self.addSubview(location)
         
@@ -126,16 +138,12 @@ class Weather: UIView,CLLocationManagerDelegate
     
     
     
-    
-    
-    
     func getWeather()
     {
         let openWeatherMapBaseURL = "http://api.openweathermap.org/data/2.5/weather?"
         
         let openWeatherMapAPIKey = "b2076932cbcb994e2d670d8119931746"
         
-        print("\(openWeatherMapBaseURL)lat=\(lat)&lon=\(lon)&APPID=\(openWeatherMapAPIKey)")
         let urlString = URL(string: "\(openWeatherMapBaseURL)lat=\(lat)&lon=\(lon)&APPID=\(openWeatherMapAPIKey)&units=metric")
         if let url = urlString
         {
@@ -146,15 +154,14 @@ class Weather: UIView,CLLocationManagerDelegate
                     print("error")
                 } else
                 {
-                    if let usableData = data
+                    if data != nil
                     {
-                        print(usableData) //JSONSerialization
+                        //print(usableData) //JSONSerialization
                         do
                         {
                             let weatherJson = try JSONSerialization.jsonObject(with: data!) as! [String:Any]
-                            print(weatherJson)
+                            
                             let currentConditions = weatherJson["main"] as! [String:Any]
-                            print(currentConditions)
                             DispatchQueue.main.sync
                                 {
                                     self.temp.text = String(format:"%.1f", currentConditions["temp"] as! Double) + "º"
@@ -163,9 +170,6 @@ class Weather: UIView,CLLocationManagerDelegate
                                     self.location.text = (weatherJson["name"] as! String)
                                     self.addShadowtoLabels()
                             }
-                            
-                            print("updated weather lables")
-                            print("temp =\(self.temp.text ?? "...")")
                         }
                         catch
                         {
@@ -193,7 +197,6 @@ class Weather: UIView,CLLocationManagerDelegate
     
     func getLocation()
     {
-        print("in loc")
         self.locationManager.requestAlwaysAuthorization()
         
         // For use in foreground

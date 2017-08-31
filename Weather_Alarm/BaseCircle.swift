@@ -57,19 +57,19 @@ class BaseCircle: UIView {
         
         if UIDevice.current.orientation.isLandscape
         {
-            print("Landscape")
+            
             baseCircle.frame = CGRect(x: 0, y: 0, width: self.frame.size.height, height: self.frame.size.height)
             baseCircle.layer.cornerRadius = (baseCircle.frame.height)/2
             baseCircle.center = CGPoint(x: self.frame.size.width*0.5 ,y: self.frame.size.height*0.5)
-            print(self.frame.size.height)
+            
             
         } else
         {
-            print("Portrait")
+            
             baseCircle.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.width)
             baseCircle.layer.cornerRadius = (baseCircle.frame.width)/2
             baseCircle.center = CGPoint(x: self.frame.size.width*0.5 ,y: self.frame.size.height*0.5)
-            print(self.frame.size.width)
+            
         }
         
         circle.frame = CGRect(x: 0, y: 0, width: baseCircle.frame.size.width*0.9, height: baseCircle.frame.size.width*0.9)

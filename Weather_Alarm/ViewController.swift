@@ -1,3 +1,4 @@
+
 //
 //  ViewController.swift
 //  Weather_Alarm
@@ -10,60 +11,105 @@ import UIKit
 
 class ViewController: UIViewController
 {
+ 
+    private var showingBack = false
     
-//    var schedular = Timer()
-//    var circle = BaseCircle()
-    var cp = CirclePath()
+    private var setAlarmView = true
+    
+    var weatherView = BaseCircle()
+    var alaramView = CirclePath()
+    let returnButton = UIButton()
+    
+    let mainView = UIView()
+    
+    
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
+        self.view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "bImage"))
+        mainView.backgroundColor = .clear
+        
+        mainView.addSubview(weatherView)
+        returnButton.setImage(#imageLiteral(resourceName: "alarm"), for: .normal)
+        returnButton.imageEdgeInsets = UIEdgeInsetsMake(15, 15, 15, 15)
+        returnButton.addTarget(self, action: #selector(tap), for: UIControlEvents.touchUpInside)
+        returnButton.backgroundColor = UIColor.fadedBlack
+        self.view.addSubview(mainView)
+        self.view.addSubview(returnButton)
+        
+        weatherView.start()
     }
     
-    func setAlarm()
+    func tap (){
+        if showingBack{
+            
+            UIView.transition(from: alaramView, to: weatherView, duration: 0.5, options: UIViewAnimationOptions.transitionFlipFromRight, completion: nil)
+            
+            alaramView.isHidden = true
+            weatherView.isHidden = false
+            
+            showingBack = false
+            
+            returnButton.setImage(#imageLiteral(resourceName: "alarm"), for: .normal)
+        }
+        else {
+            
+            if(setAlarmView)
+            {
+                mainView.addSubview(alaramView)
+                setAlarmView = false
+            }
+        
+            showingBack = true
+            
+            UIView.transition(from: self.weatherView, to: self.alaramView, duration: 0.5, options: UIViewAnimationOptions.transitionFlipFromRight, completion: nil)
+            
+            alaramView.isHidden = false
+            weatherView.isHidden = true
+            returnButton.setImage(#imageLiteral(resourceName: "backArrow"), for: .normal)
+            
+        }
+    }
+    
+    
+    
+    
+    override func viewWillLayoutSubviews()
     {
-        let days = cp.days
-        let buttonArr = [days.sunButton, days.monButton, days.tueButton, days.wedButton, days.thurButton, days.friButton, days.satButton]
+        super.viewWillLayoutSubviews()
+        mainView.frame = self.view.frame
         
+        returnButton.bounds = CGRect(x: 0.0, y: 0.0, width: self.view.frame.size.width*0.15, height: self.view.frame.size.width*0.15)
+        returnButton.center = CGPoint(x: self.view.frame.size.width*0.15, y: self.view.frame.size.height*0.72)
+        returnButton.layer.cornerRadius = returnButton.frame.size.width*0.5
+
         
-        let hour = (PowerButton.timeLabel.text ?? "00")
-        let min = (PowerButton.time2Label.text ?? "00")
-        
-        var time = ""
-        if cp.powerButton.ampmButton.isOn
+        if UIDevice.current.orientation.isLandscape
         {
-            time = "AM"
-        }
-        else{
-            time = "PM"
-        }
-        
-        
-        var alarmMsg = "\(hour) \(min) \(time) \n"
-        
-        for btn in buttonArr {
-            if btn.btnSelected {
-                if let sel = btn.titleLabel?.text
-                {
-                    alarmMsg += "\(sel) "
-                }
-            }
-            else{
-                
-            }
+            weatherView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.height*0.8, height: self.view.frame.size.height*0.8)
+            weatherView.layer.cornerRadius = (weatherView.frame.height)/2
+            weatherView.center = CGPoint(x: self.view.frame.size.width*0.5 ,y: self.view.frame.size.height*0.5)
+            
+            alaramView.frame = self.view.frame
+            
+        } else
+        {
+            weatherView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width*0.8, height: self.view.frame.size.width*0.8)
+            weatherView.layer.cornerRadius = (weatherView.frame.width)/2
+            weatherView.center = self.view.center
+                //CGPoint(x: self.view.frame.size.width*0.5 ,y: self.view.frame.size.height*0.5)
+            
+            alaramView.frame = self.view.frame
+            
+            self.view.bringSubview(toFront: returnButton)
+          
             
         }
         
         
-        print(alarmMsg)
-        
-        printAlert(msg: alarmMsg)
-        alarmMsg = ""
-        
     }
-
-    
-    
     
 }
 
