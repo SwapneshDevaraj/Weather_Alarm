@@ -12,7 +12,9 @@ class BaseCircle: UIView {
 
     
     let baseCircle = UIView()
-    var circle = Circle()
+    
+    var weatherView = Weather()
+    var timerView = TimerView()
     
     let progressPath = CAShapeLayer()
     let progressBar = CAShapeLayer()
@@ -39,7 +41,9 @@ class BaseCircle: UIView {
         blurView.frame = baseCircle.bounds
         
         
-        baseCircle.addSubview(circle)
+        baseCircle.addSubview(weatherView)
+        baseCircle.addSubview(timerView)
+        
         self.sendSubview(toBack: baseCircle)
         self.addSubview(baseCircle)
         layer.addSublayer(progressPath)
@@ -54,33 +58,24 @@ class BaseCircle: UIView {
     override func layoutSubviews()
     {
         super.layoutSubviews()
+                
+        baseCircle.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.width)
+        baseCircle.layer.cornerRadius = (baseCircle.frame.width)/2
+        baseCircle.center = CGPoint(x: self.frame.size.width*0.5 ,y: self.frame.size.height*0.5)
         
-        if UIDevice.current.orientation.isLandscape
-        {
-            
-            baseCircle.frame = CGRect(x: 0, y: 0, width: self.frame.size.height, height: self.frame.size.height)
-            baseCircle.layer.cornerRadius = (baseCircle.frame.height)/2
-            baseCircle.center = CGPoint(x: self.frame.size.width*0.5 ,y: self.frame.size.height*0.5)
-            
-            
-        } else
-        {
-            
-            baseCircle.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.width)
-            baseCircle.layer.cornerRadius = (baseCircle.frame.width)/2
-            baseCircle.center = CGPoint(x: self.frame.size.width*0.5 ,y: self.frame.size.height*0.5)
-            
-        }
+//        circle.frame = CGRect(x: 0, y: 0, width: baseCircle.frame.size.width*0.9, height: baseCircle.frame.size.width*0.9)
+//        circle.center = CGPoint(x: self.frame.size.width*0.5 ,y: self.frame.size.height*0.5)
         
-        circle.frame = CGRect(x: 0, y: 0, width: baseCircle.frame.size.width*0.9, height: baseCircle.frame.size.width*0.9)
-        circle.center = CGPoint(x: self.frame.size.width*0.5 ,y: self.frame.size.height*0.5)
+        
+        weatherView.frame = CGRect(x: (baseCircle.frame.size.width*0.5) - (baseCircle.frame.size.width*0.3), y: baseCircle.frame.origin.y+baseCircle.frame.size.height*0.1, width: baseCircle.frame.size.width*0.6, height: baseCircle.frame.size.height*0.35)
+        timerView.frame  = CGRect(x: (baseCircle.frame.size.width*0.5) - (baseCircle.frame.size.width*0.7)*0.5, y: weatherView.frame.origin.y+weatherView.frame.size.height, width: baseCircle.frame.size.width*0.7, height: baseCircle.frame.size.height*0.3 )
         
         
     }
     override func draw(_ rect: CGRect)
     {
         layer.addSublayer(progressPath)
-        let path = UIBezierPath(arcCenter: CGPoint(x: baseCircle.frame.width*0.5, y: baseCircle.frame.height*0.5), radius: baseCircle.frame.size.width*0.5-8, startAngle: CGFloat(3*Double.pi/2 + Double.pi*30/180), endAngle: CGFloat(Double.pi + Double.pi*60/180), clockwise: true)
+        let path = UIBezierPath(arcCenter: CGPoint(x: baseCircle.frame.width*0.5, y: baseCircle.frame.height*0.5), radius: baseCircle.frame.size.width*0.5-8, startAngle: CGFloat(3*Double.pi/2 + Double.pi*40/180), endAngle: CGFloat(Double.pi + Double.pi*50/180), clockwise: true)
         
         
         progressPath.path = path.cgPath
@@ -99,7 +94,8 @@ class BaseCircle: UIView {
         baseCircle.layer.addSublayer(progressBar)
         
         
-        self.bringSubview(toFront: circle)
+        self.bringSubview(toFront: weatherView)
+        self.bringSubview(toFront: timerView)
         
     }
     
@@ -123,7 +119,7 @@ class BaseCircle: UIView {
         progressBar.add(animation, forKey: "strokeEnd")
         
         
-        circle.timerView.updatetime()
+        timerView.updatetime()
     }
     
     
@@ -136,6 +132,16 @@ class BaseCircle: UIView {
         
         Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.animateCircle), userInfo: nil, repeats: true)
         
+    }
+    
+    func setWeatherText(temp: String, maxTemp: String, minTemp: String, location: String)
+    {
+        weatherView.temp.text = temp
+        weatherView.maxTemp.text = maxTemp
+        weatherView.minTemp.text = minTemp
+        weatherView.location.text = location
+
+        weatherView.addShadowtoLabels()
     }
     
     

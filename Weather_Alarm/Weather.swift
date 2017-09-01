@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import CoreLocation
 
-class Weather: UIView,CLLocationManagerDelegate
+
+class Weather: UIView
 {
     
     var temp = UILabel()
@@ -21,7 +21,7 @@ class Weather: UIView,CLLocationManagerDelegate
     private var lat : Double = 0.0
     private var lon : Double = 0.0
     
-    let locationManager = CLLocationManager()
+   
     
     
     override init(frame: CGRect)
@@ -31,8 +31,6 @@ class Weather: UIView,CLLocationManagerDelegate
         self.backgroundColor = UIColor.clear
         
         
-        getLocation()
-        Timer.scheduledTimer(timeInterval: 1800, target: self, selector: #selector(self.getLocation), userInfo: nil, repeats: true)
         
         temp.textColor = UIColor.myGrey
         
@@ -138,55 +136,7 @@ class Weather: UIView,CLLocationManagerDelegate
     
     
     
-    func getWeather()
-    {
-        let openWeatherMapBaseURL = "http://api.openweathermap.org/data/2.5/weather?"
         
-        let openWeatherMapAPIKey = "b2076932cbcb994e2d670d8119931746"
-        
-        let urlString = URL(string: "\(openWeatherMapBaseURL)lat=\(lat)&lon=\(lon)&APPID=\(openWeatherMapAPIKey)&units=metric")
-        if let url = urlString
-        {
-            let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-                if error != nil
-                {
-                    print("ERROR")
-                    print("error")
-                } else
-                {
-                    if data != nil
-                    {
-                        //print(usableData) //JSONSerialization
-                        do
-                        {
-                            let weatherJson = try JSONSerialization.jsonObject(with: data!) as! [String:Any]
-                            
-                            let currentConditions = weatherJson["main"] as! [String:Any]
-                            DispatchQueue.main.sync
-                                {
-                                    self.temp.text = String(format:"%.1f", currentConditions["temp"] as! Double) + "º"
-                                    self.minTemp.text = String(format:"%.1f", currentConditions["temp_min"] as! Double) + "º"
-                                    self.maxTemp.text = String(format:"%.1f", currentConditions["temp_max"] as! Double) + "º"
-                                    self.location.text = (weatherJson["name"] as! String)
-                                    self.addShadowtoLabels()
-                            }
-                        }
-                        catch
-                        {
-                            
-                        }
-                    }
-                }
-            }
-            task.resume()
-            
-            
-            
-        }
-        
-        
-    }
-    
     func addShadowtoLabels()
     {
         temp.attributedText = NSShadow.getShadow(temp.text!,2,(temp.frame.size.height+temp.frame.size.height*0.5)*0.1)
@@ -195,41 +145,6 @@ class Weather: UIView,CLLocationManagerDelegate
         location.attributedText = NSShadow.getShadow(location.text!,2,(location.frame.size.height+location.frame.size.height*0.5)*0.1)
     }
     
-    func getLocation()
-    {
-        self.locationManager.requestAlwaysAuthorization()
-        
-        // For use in foreground
-        self.locationManager.requestWhenInUseAuthorization()
-        
-        if CLLocationManager.locationServicesEnabled()
-        {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.startUpdatingLocation()
-            
-        }
-        
-        
-    }
-    
-    
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
-    {
-        let locValue = manager.location!.coordinate
-        lat = locValue.latitude
-        lon = locValue.longitude
-        
-        if locations.count > 0
-        {
-            locationManager.stopUpdatingLocation()
-        }
-        
-        self.getWeather()    //mashape
-        
-        
-    }
-    
+       
     
 }

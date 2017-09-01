@@ -17,6 +17,7 @@
 		0CAFAFE51F39E001007EBB26 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAFAFE41F39E001007EBB26 /* Weather.swift */; };
 		0CAFAFE71F39E04C007EBB26 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAFAFE61F39E04C007EBB26 /* Circle.swift */; };
 		0CAFAFE91F39E08F007EBB26 /* BaseCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAFAFE81F39E08F007EBB26 /* BaseCircle.swift */; };
+		0CD814271F5938B200585114 /* WeatherTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD814261F5938B200585114 /* WeatherTimeView.swift */; };
 		7F777E551F568AE500B9376F /* ClockFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F777E541F568AE500B9376F /* ClockFace.swift */; };
 		7F777E591F568B0700B9376F /* CirclePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F777E581F568B0700B9376F /* CirclePath.swift */; };
 		7F777E5B1F568B0B00B9376F /* MinuteCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F777E5A1F568B0B00B9376F /* MinuteCircle.swift */; };
@@ -66,6 +67,7 @@
 		0CAFAFE41F39E001007EBB26 /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		0CAFAFE61F39E04C007EBB26 /* Circle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		0CAFAFE81F39E08F007EBB26 /* BaseCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCircle.swift; sourceTree = "<group>"; };
+		0CD814261F5938B200585114 /* WeatherTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherTimeView.swift; sourceTree = "<group>"; };
 		7F777E541F568AE500B9376F /* ClockFace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockFace.swift; sourceTree = "<group>"; };
 		7F777E581F568B0700B9376F /* CirclePath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CirclePath.swift; sourceTree = "<group>"; };
 		7F777E5A1F568B0B00B9376F /* MinuteCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinuteCircle.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 		0CAFAFDC1F39DF45007EBB26 /* WeatherView */ = {
 			isa = PBXGroup;
 			children = (
+				0CD814261F5938B200585114 /* WeatherTimeView.swift */,
 				0CAFAFDD1F39DF6C007EBB26 /* TimerView.swift */,
 				0CAFAFE41F39E001007EBB26 /* Weather.swift */,
 				0CAFAFE81F39E08F007EBB26 /* BaseCircle.swift */,
@@ -347,6 +350,7 @@
 				7F777E5F1F568B1500B9376F /* HourCircle.swift in Sources */,
 				0CAFAFE71F39E04C007EBB26 /* Circle.swift in Sources */,
 				0CAFAFDE1F39DF6C007EBB26 /* TimerView.swift in Sources */,
+				0CD814271F5938B200585114 /* WeatherTimeView.swift in Sources */,
 				7F777E6D1F568B5100B9376F /* UIButtonExtension.swift in Sources */,
 				7F777E551F568AE500B9376F /* ClockFace.swift in Sources */,
 				7F777E6F1F568B5B00B9376F /* ViewController.swift in Sources */,

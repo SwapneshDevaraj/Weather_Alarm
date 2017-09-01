@@ -16,7 +16,7 @@ class ViewController: UIViewController
     
     private var setAlarmView = true
     
-    var weatherView = BaseCircle()
+    var weatherView = WeatherTimeView()
     var alaramView = CirclePath()
     let returnButton = UIButton()
     
@@ -39,10 +39,10 @@ class ViewController: UIViewController
         self.view.addSubview(mainView)
         self.view.addSubview(returnButton)
         
-        weatherView.start()
+        weatherView.baseCircle.start()
     }
     
-    func tap (){
+    func tap () {
         if showingBack{
             
             UIView.transition(from: alaramView, to: weatherView, duration: 0.5, options: UIViewAnimationOptions.transitionFlipFromRight, completion: nil)
@@ -86,27 +86,29 @@ class ViewController: UIViewController
         returnButton.layer.cornerRadius = returnButton.frame.size.width*0.5
 
         
-        if UIDevice.current.orientation.isLandscape
-        {
-            weatherView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.height*0.8, height: self.view.frame.size.height*0.8)
-            weatherView.layer.cornerRadius = (weatherView.frame.height)/2
-            weatherView.center = CGPoint(x: self.view.frame.size.width*0.5 ,y: self.view.frame.size.height*0.5)
-            
+//        if UIDevice.current.orientation.isLandscape
+//        {
+//            weatherView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.height*0.8, height: self.view.frame.size.height*0.8)
+//            weatherView.layer.cornerRadius = (weatherView.frame.height)/2
+//            weatherView.center = CGPoint(x: self.view.frame.size.width*0.5 ,y: self.view.frame.size.height*0.5)
+//            
+//            weatherView.frame = self.view.frame
+//            alaramView.frame = self.view.frame
+//            
+//        } else
+//        {
+//            weatherView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width*0.8, height: self.view.frame.size.width*0.8)
+//            weatherView.layer.cornerRadius = (weatherView.frame.width)/2
+//            weatherView.center = self.view.center
+//                //CGPoint(x: self.view.frame.size.width*0.5 ,y: self.view.frame.size.height*0.5)
+        
             alaramView.frame = self.view.frame
-            
-        } else
-        {
-            weatherView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width*0.8, height: self.view.frame.size.width*0.8)
-            weatherView.layer.cornerRadius = (weatherView.frame.width)/2
-            weatherView.center = self.view.center
-                //CGPoint(x: self.view.frame.size.width*0.5 ,y: self.view.frame.size.height*0.5)
-            
-            alaramView.frame = self.view.frame
+            weatherView.frame = self.view.frame
             
             self.view.bringSubview(toFront: returnButton)
           
             
-        }
+     //   }
         
         
     }
