@@ -174,25 +174,28 @@ class ViewController: UIViewController
     
     func scheduleLocalNotification(myHour:Int? ,myMinute:Int?)
     {
+        print("inside notification")
+        //let answer1 = UNNotificationAction(identifier: "Answer 1", title: "Dismiss", options: UNNotificationActionOptions.foreground)
         
+        //create notofication
         let content = UNMutableNotificationContent()
         content.title = NSString.localizedUserNotificationString(forKey: "Wake up!", arguments: nil)
         content.body = NSString.localizedUserNotificationString(forKey: "Rise and shine! It's morning time!",
                                                                 arguments: nil)
+        content.badge = 1
         content.sound = UNNotificationSound.default()
-        
         //dateInfo.calendar =
         dateInfo.hour = myHour
         dateInfo.minute = myMinute
         
         // Configure the trigger for a 7am wakeup.
         
-        //let triggerTimer = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+        let triggerTimer = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
         
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: false)
+       // let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: false)
         
         // Create the request object.
-        let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: triggerTimer)
         
         UNUserNotificationCenter.current().delegate = self
         UNUserNotificationCenter.current().add(request){(error : Error?) in

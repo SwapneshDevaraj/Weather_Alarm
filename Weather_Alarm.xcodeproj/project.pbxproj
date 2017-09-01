@@ -31,6 +31,7 @@
 		7F777E6F1F568B5B00B9376F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F777E6E1F568B5B00B9376F /* ViewController.swift */; };
 		7F777E711F568BE300B9376F /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F777E701F568BE300B9376F /* Shapes.swift */; };
 		7F833EB81F57E86B003A0454 /* AlarmNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F833EB71F57E86B003A0454 /* AlarmNotification.swift */; };
+		7F8920101F592F7200F3EA86 /* Glorious.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7F89200F1F592F7200F3EA86 /* Glorious.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		7F777E6E1F568B5B00B9376F /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7F777E701F568BE300B9376F /* Shapes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
 		7F833EB71F57E86B003A0454 /* AlarmNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmNotification.swift; sourceTree = "<group>"; };
+		7F89200F1F592F7200F3EA86 /* Glorious.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Glorious.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 				7F777E6E1F568B5B00B9376F /* ViewController.swift */,
 				0CAFAFAD1F39DEF1007EBB26 /* Main.storyboard */,
 				0CAFAFB01F39DEF1007EBB26 /* Assets.xcassets */,
+				7F89200F1F592F7200F3EA86 /* Glorious.mp3 */,
 				0CAFAFB21F39DEF1007EBB26 /* LaunchScreen.storyboard */,
 				0CAFAFB51F39DEF1007EBB26 /* Info.plist */,
 			);
@@ -276,7 +279,7 @@
 				TargetAttributes = {
 					0CAFAFA51F39DEF1007EBB26 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = JLY7ES5426;
+						DevelopmentTeam = B2YC3Y2382;
 						ProvisioningStyle = Automatic;
 					};
 					0CAFAFB91F39DEF1007EBB26 = {
@@ -318,6 +321,7 @@
 			files = (
 				0CAFAFB41F39DEF1007EBB26 /* LaunchScreen.storyboard in Resources */,
 				0CAFAFB11F39DEF1007EBB26 /* Assets.xcassets in Resources */,
+				7F8920101F592F7200F3EA86 /* Glorious.mp3 in Resources */,
 				0CAFAFAF1F39DEF1007EBB26 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -517,7 +521,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = JLY7ES5426;
+				DEVELOPMENT_TEAM = B2YC3Y2382;
 				INFOPLIST_FILE = Weather_Alarm/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.highpeak.WeatherAlarm;
@@ -533,7 +537,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = JLY7ES5426;
+				DEVELOPMENT_TEAM = B2YC3Y2382;
 				INFOPLIST_FILE = Weather_Alarm/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.highpeak.WeatherAlarm;

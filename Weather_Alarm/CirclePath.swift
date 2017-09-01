@@ -182,14 +182,18 @@ class CirclePath: UIView {
             if (flag1 == true)
             {
                 let radians = atan2f(Float(minCircle.transform.b), Float(minCircle.transform.a))
+              
                 updateMinuteLabel(radian: Double(radians).rounded(toPlaces: 1))
+                
                 minCircle.transform = CGAffineTransform(rotationAngle: -angleDifference!).concatenating(startTransform)
                 
             }
             else if (flag1 != true && firsttouch.view == hourCircle)
             {
                 let radians = atan2f(Float(hourCircle.transform.b), Float(hourCircle.transform.a))
+                
                 updateHourLabel(radian: Double(radians).rounded(toPlaces: 1))
+                
                 hourCircle.transform = CGAffineTransform(rotationAngle: -angleDifference!).concatenating(startTransform)
             }
 

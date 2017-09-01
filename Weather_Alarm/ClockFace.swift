@@ -81,7 +81,7 @@ class ClockFace
         {
             if p.offset > 0 {
                 //default font of iphone
-                let aFont = UIFont(name: "HelveticaNeue", size: radius/7)?.withSize(12)
+                let aFont = UIFont(name: "HelveticaNeue", size: radius/8)
                 
                 // create a dictionary of attributes to be applied to the string
                 let attr:CFDictionary = [NSFontAttributeName:aFont! ,NSForegroundColorAttributeName:UIColor.myGrey] as CFDictionary
@@ -122,7 +122,7 @@ class ClockFace
         {
             if p.offset > 0 {
                 //default font of iphone
-                let aFont = UIFont(name: "HelveticaNeue", size: radius/7)?.withSize(12)
+                let aFont = UIFont(name: "HelveticaNeue", size: radius/12)
                 
                 // create a dictionary of attributes to be applied to the string
                 let attr:CFDictionary = [NSFontAttributeName:aFont! ,NSForegroundColorAttributeName:UIColor.myGrey] as CFDictionary

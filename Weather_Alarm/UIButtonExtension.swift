@@ -26,7 +26,7 @@ class ButtonProp : UIButton
     
     func setDayColor(sender: UIButton, bool:Bool ,layer:CAShapeLayer ,btnTitle: String)
     {
-        let color = bool ? UIColor.cyan.cgColor : UIColor.hexStringToUIColor(hex: "#16232B").cgColor
+        let color = bool ? UIColor.myGrey.cgColor : UIColor.hexStringToUIColor(hex: "#16232B").cgColor
         let titleColor = bool ? UIColor.black : UIColor.white
         
         layer.strokeColor = color
@@ -34,7 +34,7 @@ class ButtonProp : UIButton
         sender.setTitleColor(titleColor, for: .normal)
 
         
-        if color == UIColor.cyan.cgColor
+        if color == UIColor.myGrey.cgColor
         {
             btnSelected = true
             alarmNotification.setAlarmDays(button: sender as! ButtonProp, bool: true)
