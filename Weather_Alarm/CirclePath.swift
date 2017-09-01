@@ -178,14 +178,15 @@ class CirclePath: UIView {
             
             let angle = atan2(dy, dx)
             angleDifference = CirclePath.startingAngle! - angle
-            
+            print(angleDifference)
             if (flag1 == true)
             {
                 let radians = atan2f(Float(minCircle.transform.b), Float(minCircle.transform.a))
-              
+                
                 updateMinuteLabel(radian: Double(radians).rounded(toPlaces: 1))
                 
                 minCircle.transform = CGAffineTransform(rotationAngle: -angleDifference!).concatenating(startTransform)
+               
                 
             }
             else if (flag1 != true && firsttouch.view == hourCircle)
@@ -202,6 +203,7 @@ class CirclePath: UIView {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)
     {
+    let radians = atan2f(Float(minCircle.transform.b), Float(minCircle.transform.a))
     
         flag1 = nil
     }

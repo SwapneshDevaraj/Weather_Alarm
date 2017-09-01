@@ -28,6 +28,7 @@ class PowerButton: UIView
 
         PowerButton.timeLabel.backgroundColor = UIColor.hexStringToUIColor(hex: "#2385D9")
         PowerButton.timeLabel.text = "12 :"
+        //PowerButton.timeLabel.font = UIFont.boldSystemFont(ofSize:25)
         PowerButton.timeLabel.textColor = UIColor.white
         PowerButton.timeLabel.textAlignment  = .right
         PowerButton.timeLabel.clipsToBounds = true
@@ -58,6 +59,7 @@ class PowerButton: UIView
         ampmButton.alpha = 0.8
         //currentTime()
         ampmButton.setTitle("AM", for: .normal)
+    
         ampmButton.setTitleColor(UIColor.white, for: .normal)
         ampmButton.showsTouchWhenHighlighted = true
         ampmButton.clipsToBounds = true
