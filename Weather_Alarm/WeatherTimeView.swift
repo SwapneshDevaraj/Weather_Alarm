@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 
 class WeatherTimeView: UIView,CLLocationManagerDelegate
-
+    
 {
     private var lat : Double = 0.0
     private var lon : Double = 0.0
@@ -18,38 +18,29 @@ class WeatherTimeView: UIView,CLLocationManagerDelegate
     
     
     let locationManager = CLLocationManager()
-
+    
     
     
     let baseCircle = BaseCircle()
     var weatherImage = UIImageView()
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         getLocation()
         Timer.scheduledTimer(timeInterval: 1800, target: self, selector: #selector(self.getLocation), userInfo: nil, repeats: true)
-
-    
-        weatherImage.contentMode =  UIViewContentMode.scaleAspectFit
+        
+        
+        
         weatherImage.layer.borderWidth = 0
         weatherImage.layer.borderColor = UIColor.clear.cgColor
+        weatherImage.contentMode =  UIViewContentMode.scaleAspectFill
         
-//        if ([UIImage, imageNamed: someString])
-//        {
-//            //the image exists..
-//        }
-//        else
-//        {
-//            //no image with that name
-//        }
-//         (UIImage(named: "green-square-Retina") != nil
-//       )
         
         
         self.addSubview(baseCircle)
         self.addSubview(weatherImage)
-
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -61,12 +52,12 @@ class WeatherTimeView: UIView,CLLocationManagerDelegate
         super.layoutSubviews()
         
         
-            baseCircle.frame = CGRect(x: 0, y: 0, width: self.frame.size.width*0.8, height: self.frame.size.width*0.8)
-            baseCircle.layer.cornerRadius = (baseCircle.frame.width)/2
-            baseCircle.center = self.center
+        baseCircle.frame = CGRect(x: 0, y: 0, width: self.frame.size.width*0.8, height: self.frame.size.width*0.8)
+        baseCircle.layer.cornerRadius = (baseCircle.frame.width)/2
+        baseCircle.center = self.center
         
-            weatherImage.frame = CGRect(x: 0 , y: 0, width: baseCircle.frame.size.width*0.5, height: baseCircle.frame.size.height*0.5)
-            weatherImage.center = CGPoint(x: baseCircle.frame.midX, y: baseCircle.frame.midY*0.5)
+        weatherImage.frame = CGRect(x: 0 , y: 0, width: baseCircle.frame.size.width*0.6, height: baseCircle.frame.size.height*0.6)
+        weatherImage.center = CGPoint(x: baseCircle.frame.size.width*0.55 , y: baseCircle.frame.midY*0.5 - weatherImage.frame.size.height*0.1)
     }
     
     
@@ -100,7 +91,6 @@ class WeatherTimeView: UIView,CLLocationManagerDelegate
                             let weathericon = weatherJson["weather"] as! [[String:Any]]
                             print(weatherJson)
                             let currentConditions = weatherJson["main"] as! [String:Any]
-                            print(weathericon.first?["icon"]! ?? "nil")
                             DispatchQueue.main.sync
                                 {
                                     temp = String(format:"%.1f", currentConditions["temp"] as! Double) + "º"
@@ -110,6 +100,7 @@ class WeatherTimeView: UIView,CLLocationManagerDelegate
                                     
                                     self.baseCircle.setWeatherText(temp: temp, maxTemp: maxTemp, minTemp: minTemp, location: location)
                                     
+                                    self.setweatherIcon(iconName: (weathericon.first?["icon"]! as! String) )
                                     
                             }
                         }
@@ -164,7 +155,24 @@ class WeatherTimeView: UIView,CLLocationManagerDelegate
         
         
     }
+    
+    func setweatherIcon(iconName: String )
+    {
 
-
-
+        
+        let img = UIImage(named: iconName)
+        if(img != nil)
+        {
+            
+            weatherImage.image = UIImage(named: iconName)
+        }
+        else{
+            weatherImage.image = UIImage(named: "02d")
+        }
+        
+        
+    }
+    
+    
+    
 }
