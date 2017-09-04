@@ -178,11 +178,12 @@ class CirclePath: UIView {
             
             let angle = atan2(dy, dx)
             angleDifference = CirclePath.startingAngle! - angle
-            print(angleDifference)
+          
             if (flag1 == true)
             {
                 let radians = atan2f(Float(minCircle.transform.b), Float(minCircle.transform.a))
                 
+              //  print(radians)
                 updateMinuteLabel(radian: Double(radians).rounded(toPlaces: 1))
                 
                 minCircle.transform = CGAffineTransform(rotationAngle: -angleDifference!).concatenating(startTransform)
@@ -193,6 +194,7 @@ class CirclePath: UIView {
             {
                 let radians = atan2f(Float(hourCircle.transform.b), Float(hourCircle.transform.a))
                 
+              //  print(radians)
                 updateHourLabel(radian: Double(radians).rounded(toPlaces: 1))
                 
                 hourCircle.transform = CGAffineTransform(rotationAngle: -angleDifference!).concatenating(startTransform)
@@ -205,6 +207,8 @@ class CirclePath: UIView {
     {
     let radians = atan2f(Float(minCircle.transform.b), Float(minCircle.transform.a))
     
+    
+        
         flag1 = nil
     }
     
@@ -221,7 +225,7 @@ class CirclePath: UIView {
     
     func updateMinuteLabel(radian : Double)
     {
-        
+        print(radian)
         
         if arr.index(forKey: radian) == nil {
            // print("the key 'someKey' is NOT in the dictionary")

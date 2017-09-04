@@ -11,7 +11,7 @@ import UIKit
 import UserNotifications
 import UserNotificationsUI
 
-class ViewController: UIViewController
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
  
     private var showingBack = false
@@ -32,6 +32,16 @@ class ViewController: UIViewController
     {
         super.viewDidLoad()
         
+        let tableView: UITableView = UITableView()
+        tableView.frame = CGRect(x: 0, y: 0, width: 100, height: 500)
+        tableView.dataSource = self
+        tableView.delegate = self
+        
+        self.view.addSubview(tableView)
+        
+        
+        
+        
         self.view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "bImage"))
         mainView.backgroundColor = .clear
         
@@ -46,6 +56,20 @@ class ViewController: UIViewController
         alaramView.powerButton.setButton.addTarget(self, action: #selector(setAlarm), for: UIControlEvents.touchUpInside)
         
         weatherView.start()
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCellStyle.value1, reuseIdentifier: "Cell")
+        cell.textLabel!.text = "foo"
+        return cell
     }
     
     func tap (){
