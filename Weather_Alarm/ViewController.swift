@@ -26,6 +26,7 @@ class ViewController: UIViewController
     let mainView = UIView()
     
     let requestIdentifier = "MorningAlarm"
+    
     var dateInfo = DateComponents()
     
     
@@ -185,10 +186,15 @@ class ViewController: UIViewController
                                                                 arguments: nil)
         content.badge = 1
         content.sound = UNNotificationSound(named:"Glorious.mp3")
-        //dateInfo.calendar =
+       dateInfo.calendar = Calendar.autoupdatingCurrent
+        //let calender = Calendar.autoupdatingCurrent
+        dateInfo.month = dateInfo.month
+        dateInfo.weekday = 2
+        
         dateInfo.hour = myHour
         dateInfo.minute = myMinute
         
+        print(dateInfo.month)
         // Configure the trigger for a 7am wakeup.
         
         let triggerTimer = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
@@ -197,6 +203,8 @@ class ViewController: UIViewController
         
         // Create the request object.
         let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: triggerTimer)
+        
+       
         
         UNUserNotificationCenter.current().delegate = self
         UNUserNotificationCenter.current().add(request){(error : Error?) in
@@ -215,7 +223,7 @@ extension ViewController:UNUserNotificationCenterDelegate{
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
-        print("Notification being triggered")
+        print("Notification being triggered in foreground")
         //You can either present alert ,sound or increase badge while the app is in foreground too with ios 10
         //to distinguish between notifications
         if notification.request.identifier == requestIdentifier{
