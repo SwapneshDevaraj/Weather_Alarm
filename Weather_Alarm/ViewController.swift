@@ -25,6 +25,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     let mainView = UIView()
     
     let requestIdentifier = "MorningAlarm"
+    
     var dateInfo = DateComponents()
     
     
@@ -198,7 +199,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func scheduleLocalNotification(myHour:Int? ,myMinute:Int?)
     {
-        print("inside notification")
+        //print("inside notification")
         //let answer1 = UNNotificationAction(identifier: "Answer 1", title: "Dismiss", options: UNNotificationActionOptions.foreground)
         
         //create notofication
@@ -207,19 +208,26 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         content.body = NSString.localizedUserNotificationString(forKey: "Rise and shine! It's morning time!",
                                                                 arguments: nil)
         content.badge = 1
-        content.sound = UNNotificationSound.default()
-        //dateInfo.calendar =
+        content.sound = UNNotificationSound(named:"Glorious.mp3")
+       dateInfo.calendar = Calendar.autoupdatingCurrent
+        //let calender = Calendar.autoupdatingCurrent
+        dateInfo.month = dateInfo.month
+        dateInfo.weekday = 2
+        
         dateInfo.hour = myHour
         dateInfo.minute = myMinute
         
+        print(dateInfo.month)
         // Configure the trigger for a 7am wakeup.
         
-        let triggerTimer = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+        let triggerTimer = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         
-       // let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: false)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: false)
         
         // Create the request object.
         let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: triggerTimer)
+        
+       
         
         UNUserNotificationCenter.current().delegate = self
         UNUserNotificationCenter.current().add(request){(error : Error?) in
@@ -238,7 +246,7 @@ extension ViewController:UNUserNotificationCenterDelegate{
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
-        print("Notification being triggered")
+        print("Notification being triggered in foreground")
         //You can either present alert ,sound or increase badge while the app is in foreground too with ios 10
         //to distinguish between notifications
         if notification.request.identifier == requestIdentifier{

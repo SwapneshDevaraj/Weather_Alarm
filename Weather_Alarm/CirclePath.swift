@@ -101,7 +101,7 @@ class CirclePath: UIView {
                 powerButton.layer.cornerRadius = powerButton.bounds.size.width*0.5
                 
                 days.bounds = CGRect(x: 0.0, y: 0.0, width: self.bounds.size.width, height: self.bounds.size.height)
-                days.center = CGPoint(x: self.bounds.size.width*0.5, y: self.bounds.size.height*0.5)
+                days.center = CGPoint(x: self.bounds.size.width*0.5, y: self.bounds.size.height*0.45)
                 
                 shapes.bounds = CGRect(x: 0.0, y: 0.0, width: self.bounds.size.width, height: self.bounds.size.height)
                 shapes.center = CGPoint(x: self.bounds.size.width*0.5, y: self.bounds.size.height*0.5)
