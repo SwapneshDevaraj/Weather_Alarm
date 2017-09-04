@@ -190,7 +190,7 @@ class ViewController: UIViewController
         
         // Configure the trigger for a 7am wakeup.
         
-        let triggerTimer = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+        let triggerTimer = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         
        // let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: false)
         
