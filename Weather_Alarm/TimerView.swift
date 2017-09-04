@@ -57,7 +57,6 @@ class TimerView: UIView
         hourAmPm.textColor = UIColor.myGrey
         hourAmPm.numberOfLines = 1;
         hourAmPm.adjustsFontSizeToFitWidth = true;
-        
         hourAmPm.textAlignment = .center
         hourAmPm.layer.borderWidth = 0
         hourAmPm.layer.borderColor = UIColor.clear.cgColor
@@ -100,6 +99,15 @@ class TimerView: UIView
         
         time.font = UIFont.systemFont(ofSize: time.frame.size.height)
         time.font = UIFont.boldSystemFont(ofSize: time.font.pointSize)
+        
+        year.font = UIFont.systemFont(ofSize: year.frame.size.height)
+        
+        
+        myDate.font = UIFont.systemFont(ofSize: myDate.frame.size.height)
+        
+        
+        hourAmPm.font = UIFont.systemFont(ofSize: hourAmPm.frame.size.height)
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -120,7 +128,7 @@ class TimerView: UIView
         
         alarmImage.frame = CGRect(x: time.frame.size.width+time.frame.origin.x, y: year.frame.size.height+time.frame.size.height*0.2, width: self.frame.width*0.2, height: time.frame.size.height*0.33)
 
-        hourAmPm.frame = CGRect(x: time.frame.size.width+time.frame.origin.x, y: alarmImage.frame.origin.y+alarmImage.frame.size.height, width: alarmImage.frame.size.width, height: time.frame.size.height*0.33 )
+        hourAmPm.frame = CGRect(x: time.frame.size.width+time.frame.origin.x, y: alarmImage.frame.origin.y+alarmImage.frame.size.height+time.frame.size.height*0.08, width: alarmImage.frame.size.width, height: time.frame.size.height*0.16 )
         
         
     }   
