@@ -59,6 +59,7 @@ class Days: UIView
         tueButton.addTarget(self, action: #selector(togglePressed(button:)), for: UIControlEvents.touchUpInside)
         
         wedButton.backgroundColor = .clear
+       // wedButton.alpha = 0.3
         wedButton.tag = 4
         wedButton.showsTouchWhenHighlighted = true
         wedButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 15)
@@ -66,7 +67,7 @@ class Days: UIView
         wedButton.clipsToBounds = true
         wedButton.addTarget(self, action: #selector(togglePressed(button:)), for: UIControlEvents.touchUpInside)
         
-        thurButton.backgroundColor = .clear
+        thurButton.backgroundColor = .brown
         thurButton.tag = 5
         thurButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 15)
         thurButton.setTitle("Thu", for: .normal)
@@ -91,7 +92,7 @@ class Days: UIView
         satButton.addTarget(self, action: #selector(togglePressed(button:)), for: UIControlEvents.touchUpInside)
         
         //
-        sunView.backgroundColor = .clear
+        sunView.backgroundColor = .white
         sunView.transform = CGAffineTransform(rotationAngle: ClockFace.degree2radian(a: 270))
         self.addSubview(sunView)
         sunView.addSubview(sunButton)
@@ -109,10 +110,10 @@ class Days: UIView
         tueView.addSubview(tueButton)
         
         //
-        wedView.backgroundColor = .clear
-        wedView.transform = CGAffineTransform(rotationAngle: ClockFace.degree2radian(a: 340))
-        self.addSubview(wedView)
-        wedView.addSubview(wedButton)
+        wedView.backgroundColor = .red
+        wedButton.transform = CGAffineTransform(rotationAngle: ClockFace.degree2radian(a: 340))
+        //self.addSubview(wedView)
+        self.addSubview(wedButton)
         
         //
         thurView.backgroundColor = .clear
@@ -170,7 +171,7 @@ class Days: UIView
         wedView.center = CGPoint(x: self.bounds.size.width*0.36, y: self.bounds.size.height*0.285)
         
         wedButton.bounds = CGRect(x: 0.0 ,y: 0.0, width: buttonsize, height: buttonsize)
-        wedButton.center = CGPoint(x: wedView.bounds.size.width*0.4, y: wedView.bounds.size.height*0.55)
+        wedButton.center = CGPoint(x: self.bounds.size.width*0.36, y: self.bounds.size.height*0.285)
         
         //thursday
         thurView.bounds = CGRect(x: 0.0 ,y: 0.0 , width: buttonsize*0.8, height: buttonsize*0.8)

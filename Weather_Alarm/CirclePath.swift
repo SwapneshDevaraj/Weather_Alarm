@@ -178,7 +178,7 @@ class CirclePath: UIView {
             
             let angle = atan2(dy, dx)
             angleDifference = CirclePath.startingAngle! - angle
-            print(angleDifference)
+           
             if (flag1 == true)
             {
                 let radians = atan2f(Float(minCircle.transform.b), Float(minCircle.transform.a))

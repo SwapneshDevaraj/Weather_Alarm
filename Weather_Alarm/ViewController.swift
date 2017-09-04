@@ -174,7 +174,7 @@ class ViewController: UIViewController
     
     func scheduleLocalNotification(myHour:Int? ,myMinute:Int?)
     {
-        print("inside notification")
+        //print("inside notification")
         //let answer1 = UNNotificationAction(identifier: "Answer 1", title: "Dismiss", options: UNNotificationActionOptions.foreground)
         
         //create notofication
