@@ -39,6 +39,8 @@ class CirclePath: UIView {
     
     var alertMsg = ""
     
+    var minuteRadian :Double!
+    
     
     override init(frame: CGRect)
     {
@@ -197,6 +199,22 @@ class CirclePath: UIView {
     {
     
         flag1 = nil
+        
+        if var rad = Double(PowerButton.time2Label.text!)
+        {
+            rad = rad / 5
+            
+            print ("rad = \(rad)")
+            
+            let radans = abs(rad - minuteRadian)
+            print("radans = \(radans)")
+            
+            if (minuteRadian - (rad+0.5))/2 >= radans
+            {
+                print(" final =  \((arr[minuteRadian]!*5) + 1)")
+                PowerButton.time2Label.text = "\((arr[minuteRadian]!*5) + 1)"
+            }
+        }
     }
     
     func distancefromCentre(point:CGPoint) -> CGFloat
@@ -212,7 +230,7 @@ class CirclePath: UIView {
     
     func updateMinuteLabel(radian : Double)
     {
-        
+        minuteRadian = radian
         
         if arr.index(forKey: radian) == nil {
            // print("the key 'someKey' is NOT in the dictionary")
@@ -227,6 +245,7 @@ class CirclePath: UIView {
                 else
                 {
                     PowerButton.time2Label.text = "\(arr[radian]!*5 )"
+                    
                 }
                 
             }
