@@ -16,7 +16,7 @@ extension Double {
     }
 }
 
-class CirclePath: UIView {
+class CirclePath: UIView, UITableViewDataSource, UITableViewDelegate {
     
     var minCircle = MinuteCircle()
     var hourCircle = HourCircle()
@@ -24,7 +24,7 @@ class CirclePath: UIView {
     var days = Days()
     var shapes = Shapes()
     let alarmNotification = AlarmNotification()
-    
+    let tableView: UITableView = UITableView()
     
     var angleDifference: CGFloat?
     var location:CGPoint?
@@ -71,12 +71,30 @@ class CirclePath: UIView {
         
         self.arr = getMyValues()
         
+       
+       
         
+        tableView.dataSource = self
+        tableView.delegate = self
+        
+        self.addSubview(tableView)
         
     }
     
-
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 7
+    }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCellStyle.value1, reuseIdentifier: "Cell")
+        cell.textLabel!.text = "foo"
+        return cell
+    }
+   
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -105,7 +123,9 @@ class CirclePath: UIView {
                 
                 shapes.bounds = CGRect(x: 0.0, y: 0.0, width: self.bounds.size.width, height: self.bounds.size.height)
                 shapes.center = CGPoint(x: self.bounds.size.width*0.5, y: self.bounds.size.height*0.5)
-                
+        
+        
+                tableView.frame = CGRect(x: 0, y: self.frame.size.height*0.8, width: self.frame.size.width, height: 290)
                
     }
   
@@ -207,8 +227,6 @@ class CirclePath: UIView {
     {
     let radians = atan2f(Float(minCircle.transform.b), Float(minCircle.transform.a))
     
-    
-        
         flag1 = nil
     }
     
