@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C8D888B1F5D54C5002A4136 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C8D888A1F5D54C5002A4136 /* AVFoundation.framework */; };
 		0CAFAFAA1F39DEF1007EBB26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAFAFA91F39DEF1007EBB26 /* AppDelegate.swift */; };
 		0CAFAFAF1F39DEF1007EBB26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CAFAFAD1F39DEF1007EBB26 /* Main.storyboard */; };
 		0CAFAFB11F39DEF1007EBB26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CAFAFB01F39DEF1007EBB26 /* Assets.xcassets */; };
@@ -52,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C8D888A1F5D54C5002A4136 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		0CAFAFA61F39DEF1007EBB26 /* Weather_Alarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather_Alarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CAFAFA91F39DEF1007EBB26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CAFAFAE1F39DEF1007EBB26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C8D888B1F5D54C5002A4136 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,6 +136,14 @@
 			name = Utils;
 			sourceTree = "<group>";
 		};
+		0C8D88891F5D54C4002A4136 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0C8D888A1F5D54C5002A4136 /* AVFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		0CAFAF9D1F39DEF1007EBB26 = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +151,7 @@
 				0CAFAFBD1F39DEF1007EBB26 /* Weather_AlarmTests */,
 				0CAFAFC81F39DEF1007EBB26 /* Weather_AlarmUITests */,
 				0CAFAFA71F39DEF1007EBB26 /* Products */,
+				0C8D88891F5D54C4002A4136 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};

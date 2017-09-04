@@ -11,6 +11,7 @@ import UIKit
 import UserNotifications
 import UserNotificationsUI
 
+
 class ViewController: UIViewController
 {
  
@@ -183,7 +184,7 @@ class ViewController: UIViewController
         content.body = NSString.localizedUserNotificationString(forKey: "Rise and shine! It's morning time!",
                                                                 arguments: nil)
         content.badge = 1
-        content.sound = UNNotificationSound.default()
+        content.sound = UNNotificationSound(named:"Glorious.mp3")
         //dateInfo.calendar =
         dateInfo.hour = myHour
         dateInfo.minute = myMinute
@@ -192,7 +193,7 @@ class ViewController: UIViewController
         
         let triggerTimer = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         
-       // let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: false)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: false)
         
         // Create the request object.
         let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: triggerTimer)
