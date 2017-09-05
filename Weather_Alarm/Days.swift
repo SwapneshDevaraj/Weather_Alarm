@@ -28,9 +28,9 @@ class Days: UIView
        
         sunButton.backgroundColor = .clear
         sunButton.setTitle("Sun", for: .normal)
-        sunButton.titleLabel?.adjustsFontSizeToFitWidth = true
+       // sunButton.titleLabel?.adjustsFontSizeToFitWidth = true
        
-       //sunButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 15)
+       sunButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 15)
         sunButton.tag = 1
         sunButton.showsTouchWhenHighlighted = true
         sunButton.clipsToBounds = true
@@ -39,6 +39,7 @@ class Days: UIView
         monButton.backgroundColor = .clear
         monButton.tag = 2
         monButton.setTitle("Mon", for: .normal)
+        monButton.titleLabel?.adjustsFontSizeToFitWidth = true
         monButton.clipsToBounds = true
         monButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 15)
         monButton.showsTouchWhenHighlighted = true
@@ -48,6 +49,7 @@ class Days: UIView
         tueButton.backgroundColor = .clear
         tueButton.tag = 3
         tueButton.setTitle("Tue", for: .normal)
+        tueButton.titleLabel?.adjustsFontSizeToFitWidth = true
         tueButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 15)
         tueButton.showsTouchWhenHighlighted = true
         tueButton.clipsToBounds = true
@@ -57,6 +59,7 @@ class Days: UIView
        // wedButton.alpha = 0.3
         wedButton.tag = 4
         wedButton.showsTouchWhenHighlighted = true
+        wedButton.titleLabel?.adjustsFontSizeToFitWidth = true
         wedButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 15)
         wedButton.setTitle("Wed", for: .normal)
         wedButton.clipsToBounds = true
@@ -66,6 +69,7 @@ class Days: UIView
         thurButton.tag = 5
         thurButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 15)
         thurButton.setTitle("Thu", for: .normal)
+        thurButton.titleLabel?.adjustsFontSizeToFitWidth = true
         thurButton.showsTouchWhenHighlighted = true
         thurButton.clipsToBounds = true
         thurButton.addTarget(self, action: #selector(togglePressed(button:)), for: UIControlEvents.touchUpInside)
@@ -74,6 +78,7 @@ class Days: UIView
         friButton.tag = 6
         friButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 15)
         friButton.setTitle("Fri", for: .normal)
+        friButton.titleLabel?.adjustsFontSizeToFitWidth = true
         friButton.showsTouchWhenHighlighted = true
         friButton.clipsToBounds = true
         friButton.addTarget(self, action: #selector(togglePressed(button:)), for: UIControlEvents.touchUpInside)
@@ -82,6 +87,7 @@ class Days: UIView
         satButton.tag = 7
         satButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 15)
         satButton.setTitle("Sat", for: .normal)
+        satButton.titleLabel?.adjustsFontSizeToFitWidth = true
         satButton.showsTouchWhenHighlighted = true
         satButton.clipsToBounds = true
         satButton.addTarget(self, action: #selector(togglePressed(button:)), for: UIControlEvents.touchUpInside)
@@ -89,42 +95,42 @@ class Days: UIView
         //
       
         sunButton.transform = CGAffineTransform(rotationAngle: ClockFace.degree2radian(a: 270))
-       // self.addSubview(sunView)
+       
         self.addSubview(sunButton)
         
         //
        
         monButton.transform = CGAffineTransform(rotationAngle: ClockFace.degree2radian(a: 290))
-       // self.addSubview(monView)
+       
         self.addSubview(monButton)
         
         //
         
         tueButton.transform = CGAffineTransform(rotationAngle: ClockFace.degree2radian(a: 310))
-        //self.addSubview(tueView)
+        
         self.addSubview(tueButton)
         
         //
       
         wedButton.transform = CGAffineTransform(rotationAngle: ClockFace.degree2radian(a: 340))
-        //self.addSubview(wedView)
+      
         self.addSubview(wedButton)
         
         //
         
-        //self.addSubview(thurView)
+        
         self.addSubview(thurButton)
         
         //
         
         friButton.transform = CGAffineTransform(rotationAngle: ClockFace.degree2radian(a: 25))
-        //self.addSubview(friView)
+       
         self.addSubview(friButton)
         
         //
        
         satButton.transform = CGAffineTransform(rotationAngle: ClockFace.degree2radian(a: 45))
-       // self.addSubview(satView)
+      
         self.addSubview(satButton)
         
     }

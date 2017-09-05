@@ -11,7 +11,7 @@ import UIKit
 import UserNotifications
 import UserNotificationsUI
 
-class ViewController: UIViewController
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
  
     private var showingBack = false
@@ -21,19 +21,18 @@ class ViewController: UIViewController
     var weatherView = BaseCircle()
     var alaramView = CirclePath()
     let returnButton = UIButton()
-  // let alarmNotification = AlarmNotification()
     let mainView = UIView()
     
     let requestIdentifier = "MorningAlarm"
     
     var dateInfo = DateComponents()
-    
+    var count = 0
+    var alarms = [String]()
+    let tableView: UITableView = UITableView()
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
-
         
         self.view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "bImage"))
         mainView.backgroundColor = .clear
@@ -49,6 +48,14 @@ class ViewController: UIViewController
         alaramView.powerButton.setButton.addTarget(self, action: #selector(setAlarm), for: UIControlEvents.touchUpInside)
         
         weatherView.start()
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.backgroundColor = UIColor.clear
+        
+        alaramView.addSubview(tableView)
+        
+       
     }
     
  
@@ -116,9 +123,9 @@ class ViewController: UIViewController
             
             self.view.bringSubview(toFront: returnButton)
           
-            
+            tableView.frame = CGRect(x: 0, y: alaramView.frame.size.height*0.8, width: alaramView.frame.size.width, height: alaramView.frame.size.height)
         }
-        
+       
         
     }
     
@@ -168,14 +175,20 @@ class ViewController: UIViewController
         alarmMsg += AlarmNotification.alarmDays
         
         printAlert(msg: alarmMsg)
+        count += 1
+        alarms.append("Alarm-\(count) \(hour):\(min) \(time)")
         
+        print("count is \(count)")
         
-        //count += 1
+        self.tableView.reloadData()
+        
         //defaults.set("\(alarmMsg)", forKey: "Alarm-\(count)")
        // print( "print the default value Alarm - \(defaults.string(forKey: "Alarm-\(count)") ?? "error")")
-        
+        dump(alarms)
         self.scheduleLocalNotification(myHour: myHr , myMinute: myMin)
+       
     }
+    
     
     func scheduleLocalNotification(myHour:Int? ,myMinute:Int?)
     {
@@ -189,25 +202,28 @@ class ViewController: UIViewController
                                                                 arguments: nil)
         content.badge = 1
         content.sound = UNNotificationSound(named:"Glorious.mp3")
+        
        dateInfo.calendar = Calendar.autoupdatingCurrent
+        
         //let calender = Calendar.autoupdatingCurrent
-        dateInfo.month = dateInfo.month
+        
+       // dateInfo.month = dateInfo.month
         dateInfo.weekday = 2
         
         dateInfo.hour = myHour
         dateInfo.minute = myMinute
         
-        print("month is \(dateInfo.month)")
+        
         // Configure the trigger for a 7am wakeup.
         
         let triggerTimer = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: false)
+       // let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: false)
         
         // Create the request object.
         let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: triggerTimer)
-        
        
+        
         
         UNUserNotificationCenter.current().delegate = self
         UNUserNotificationCenter.current().add(request){(error : Error?) in
@@ -220,7 +236,28 @@ class ViewController: UIViewController
     }
 
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return alarms.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+      //  var cell = UITableViewCell(style: UITableViewCellStyle.value1, reuseIdentifier: "Cell")
+        var cell:UITableViewCell! = UITableViewCell(style: UITableViewCellStyle.value1, reuseIdentifier: "Cell")
+        if(cell == nil){
+            cell = UITableViewCell.init(style: .default, reuseIdentifier: "Cell")
+        }
+        cell.textLabel!.text = alarms[indexPath.row]
+        cell.backgroundColor = .clear
+        cell.textLabel?.textColor = UIColor.myGrey
+        return cell
+    }
+    
+   
 }
+
+
+
+
 
 extension ViewController:UNUserNotificationCenterDelegate{
     
