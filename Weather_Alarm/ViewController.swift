@@ -123,7 +123,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             
             self.view.bringSubview(toFront: returnButton)
           
-            tableView.frame = CGRect(x: 0, y: alaramView.frame.size.height*0.8, width: alaramView.frame.size.width, height: alaramView.frame.size.height)
+            tableView.frame = CGRect(x: 0, y: alaramView.frame.size.height*0.8, width: alaramView.frame.size.width, height: alaramView.frame.size.height*0.5)
         }
        
         
