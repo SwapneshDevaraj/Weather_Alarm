@@ -24,6 +24,8 @@ class WeatherTimeView: UIView,CLLocationManagerDelegate
     let baseCircle = BaseCircle()
     var weatherImage = UIImageView()
     
+    private var imageName = ""
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -57,7 +59,25 @@ class WeatherTimeView: UIView,CLLocationManagerDelegate
         baseCircle.center = self.center
         
         weatherImage.frame = CGRect(x: 0 , y: 0, width: baseCircle.frame.size.width*0.6, height: baseCircle.frame.size.height*0.6)
-        weatherImage.center = CGPoint(x: baseCircle.frame.size.width*0.55 , y: baseCircle.frame.midY*0.5 - weatherImage.frame.size.height*0.1)
+        
+        
+        if (imageName == "10" || imageName == "11" || imageName == "13")
+        {
+            print("in if")
+            weatherImage.center = CGPoint(x: baseCircle.frame.size.width*0.55 + weatherImage.frame.size.height*0.1 , y:baseCircle.frame.origin.y - weatherImage.frame.size.height*0.20)
+            
+        }
+        else if (imageName == "04")
+        {
+            print("else if")
+            weatherImage.center = CGPoint(x: baseCircle.frame.size.width*0.55 + weatherImage.frame.size.height*0.05 , y: baseCircle.frame.origin.y - weatherImage.frame.size.height*0.05 )
+        }
+        else{
+            print("else")
+            weatherImage.center = CGPoint(x: baseCircle.frame.size.width*0.55 , y: baseCircle.frame.origin.y - weatherImage.frame.size.height*0.20 )
+        }
+        
+        
     }
     
     
@@ -158,7 +178,14 @@ class WeatherTimeView: UIView,CLLocationManagerDelegate
     
     func setweatherIcon(iconName: String )
     {
-
+        imageName = String(iconName.characters.prefix(2))
+        
+        if (imageName == "10" || imageName == "11" || imageName == "13" || imageName == "04")
+        {
+            print("in set weather")
+            setNeedsLayout()
+           
+        }
         
         let img = UIImage(named: iconName)
         if(img != nil)
@@ -167,7 +194,7 @@ class WeatherTimeView: UIView,CLLocationManagerDelegate
             weatherImage.image = UIImage(named: iconName)
         }
         else{
-            weatherImage.image = UIImage(named: "02d")
+            weatherImage.image = #imageLiteral(resourceName: "02d")
         }
         
         
@@ -176,3 +203,4 @@ class WeatherTimeView: UIView,CLLocationManagerDelegate
     
     
 }
+

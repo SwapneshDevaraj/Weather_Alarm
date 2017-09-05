@@ -19,7 +19,7 @@ class BaseCircle: UIView {
     let progressPath = CAShapeLayer()
     let progressBar = CAShapeLayer()
     
-    let timescheduler = Timer()
+    var timescheduler : Timer!
     
     var animation : CABasicAnimation!
     
@@ -129,9 +129,30 @@ class BaseCircle: UIView {
     
     func start ()
     {
+        let now = Date()
+        let calendar = Calendar.current
         
-        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.animateCircle), userInfo: nil, repeats: true)
+        let seconds = calendar.component(.second, from:  now)
         
+        let sduration = 60 - seconds
+        
+        if((timescheduler) != nil){
+            self.invalidateTimer()
+        }
+        
+        if(sduration < 60) {
+            timescheduler = Timer.scheduledTimer(timeInterval: TimeInterval(sduration), target: self, selector: #selector(self.start), userInfo: nil, repeats: false)
+        }
+        else {
+            timescheduler = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(self.animateCircle), userInfo: nil, repeats: true)
+        }
+        
+        self.animateCircle()
+    }
+    
+    func invalidateTimer() {
+        timescheduler.invalidate()
+        timescheduler = nil
     }
     
     func setWeatherText(temp: String, maxTemp: String, minTemp: String, location: String)

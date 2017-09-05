@@ -28,7 +28,7 @@ class TimerView: UIView
         
         
         year  = UILabel()
-        year.backgroundColor = UIColor.fadedBlack
+        year.backgroundColor = UIColor.clear
         year.textColor = UIColor.myGrey
         year.textAlignment = .center
         year.numberOfLines = 1;
@@ -40,7 +40,7 @@ class TimerView: UIView
         
         
         time  = UILabel()
-        time.backgroundColor = UIColor.fadedBlack
+        time.backgroundColor = UIColor.clear
         time.numberOfLines = 0;
         
         time.adjustsFontSizeToFitWidth = true;
@@ -53,7 +53,7 @@ class TimerView: UIView
         
         
         hourAmPm  = UILabel()
-        hourAmPm.backgroundColor = UIColor.fadedBlack
+        hourAmPm.backgroundColor = UIColor.clear
         hourAmPm.textColor = UIColor.myGrey
         hourAmPm.numberOfLines = 1;
         hourAmPm.adjustsFontSizeToFitWidth = true;

@@ -52,16 +52,20 @@ class ViewController: UIViewController
             
             showingBack = false
             
+            weatherView.baseCircle.start()
+            
             returnButton.setImage(#imageLiteral(resourceName: "alarm"), for: .normal)
         }
         else {
+            
+            weatherView.baseCircle.invalidateTimer();
             
             if(setAlarmView)
             {
                 mainView.addSubview(alaramView)
                 setAlarmView = false
             }
-        
+            
             showingBack = true
             
             UIView.transition(from: self.weatherView, to: self.alaramView, duration: 0.5, options: UIViewAnimationOptions.transitionFlipFromRight, completion: nil)
@@ -75,7 +79,6 @@ class ViewController: UIViewController
     
     
     
-    
     override func viewWillLayoutSubviews()
     {
         super.viewWillLayoutSubviews()
@@ -85,30 +88,10 @@ class ViewController: UIViewController
         returnButton.center = CGPoint(x: self.view.frame.size.width*0.15, y: self.view.frame.size.height*0.72)
         returnButton.layer.cornerRadius = returnButton.frame.size.width*0.5
 
-        
-//        if UIDevice.current.orientation.isLandscape
-//        {
-//            weatherView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.height*0.8, height: self.view.frame.size.height*0.8)
-//            weatherView.layer.cornerRadius = (weatherView.frame.height)/2
-//            weatherView.center = CGPoint(x: self.view.frame.size.width*0.5 ,y: self.view.frame.size.height*0.5)
-//            
-//            weatherView.frame = self.view.frame
-//            alaramView.frame = self.view.frame
-//            
-//        } else
-//        {
-//            weatherView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width*0.8, height: self.view.frame.size.width*0.8)
-//            weatherView.layer.cornerRadius = (weatherView.frame.width)/2
-//            weatherView.center = self.view.center
-//                //CGPoint(x: self.view.frame.size.width*0.5 ,y: self.view.frame.size.height*0.5)
-        
-            alaramView.frame = self.view.frame
-            weatherView.frame = self.view.frame
+        alaramView.frame = self.view.frame
+        weatherView.frame = self.view.frame
             
-            self.view.bringSubview(toFront: returnButton)
-          
-            
-     //   }
+        self.view.bringSubview(toFront: returnButton)
         
         
     }
