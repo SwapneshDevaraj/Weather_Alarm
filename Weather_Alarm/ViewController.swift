@@ -28,6 +28,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var dateInfo = DateComponents()
     var count = 0
     var alarms = [String]()
+    
     let tableView: UITableView = UITableView()
     
     override func viewDidLoad()
@@ -52,7 +53,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.dataSource = self
         tableView.delegate = self
         tableView.backgroundColor = UIColor.clear
-        
+        tableView.rowHeight = 50
         alaramView.addSubview(tableView)
         
        
@@ -123,7 +124,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             
             self.view.bringSubview(toFront: returnButton)
           
-            tableView.frame = CGRect(x: 0, y: alaramView.frame.size.height*0.8, width: alaramView.frame.size.width, height: alaramView.frame.size.height*0.5)
+            tableView.frame = CGRect(x: 0, y: alaramView.frame.size.height*0.8, width: alaramView.frame.size.width, height: alaramView.frame.size.height*0.2)
         }
        
         
@@ -169,24 +170,34 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         
         var alarmMsg = "\(hour):\(min) \(time) \n"
+
+        alarmMsg += AlarmNotification.alarmDays
         print(alarmMsg)
+        
+        var alarmForAraray = "\(hour):\(min) \(time) \(AlarmNotification.alarmDays)"
+        
+        print(alarmForAraray)
+        if !(alarms.contains(alarmForAraray)){
+            printAlert(msg: alarmMsg)
+            count += 1
+            alarms.append("\(hour):\(min) \(time) \(AlarmNotification.alarmDays)")
+        }else{
+            printAlert(msg: "Alarm already exists")
+        }
+        
+        
+//        printAlert(msg: alarmMsg)
+//        count += 1
+//        alarms.append("Alarm-\(count)\(hour):\(min) \(time) \(AlarmNotification.alarmDays)")
 
         
-        alarmMsg += AlarmNotification.alarmDays
-        
-        printAlert(msg: alarmMsg)
-        count += 1
-        alarms.append("Alarm-\(count) \(hour):\(min) \(time)")
-        
-        print("count is \(count)")
-        
-        self.tableView.reloadData()
+        tableView.reloadData()
         
         //defaults.set("\(alarmMsg)", forKey: "Alarm-\(count)")
        // print( "print the default value Alarm - \(defaults.string(forKey: "Alarm-\(count)") ?? "error")")
         dump(alarms)
-        self.scheduleLocalNotification(myHour: myHr , myMinute: myMin)
-       
+   self.scheduleLocalNotification(myHour: myHr , myMinute: myMin)
+        
     }
     
     
@@ -201,7 +212,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         content.body = NSString.localizedUserNotificationString(forKey: "Rise and shine! It's morning time!",
                                                                 arguments: nil)
         content.badge = 1
-        content.sound = UNNotificationSound(named:"Glorious.mp3")
+        content.sound = UNNotificationSound.default()
+            //UNNotificationSound(named:"Glorious.mp3")
         
        dateInfo.calendar = Calendar.autoupdatingCurrent
         
@@ -234,8 +246,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         
     }
-
+  
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.rowHeight
+    }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return tableView.rowHeight
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return alarms.count
     }
@@ -247,8 +266,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             cell = UITableViewCell.init(style: .default, reuseIdentifier: "Cell")
         }
         cell.textLabel!.text = alarms[indexPath.row]
+        
         cell.backgroundColor = .clear
         cell.textLabel?.textColor = UIColor.myGrey
+        
         return cell
     }
     
