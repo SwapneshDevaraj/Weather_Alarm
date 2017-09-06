@@ -28,12 +28,13 @@ class  Shapes:UIView  {
     var friBorder = CAShapeLayer()
     var satBorder = CAShapeLayer()
 
+    var someButton = ButtonProp()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
 //        self.isUserInteractionEnabled = true
-        
-        
+        someButton.backgroundColor = .red
+       self.addSubview(someButton)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -45,7 +46,8 @@ class  Shapes:UIView  {
         super.layoutSubviews()
         self.isUserInteractionEnabled = true
 
-       
+       someButton.frame = CGRect(x: 0, y: 0, width: self.bounds.size.width*0.14, height: self.bounds.size.width*0.14)
+        someButton.bounds = Shapes.sunLayer.bounds
     }
     
     override func draw(_ rect: CGRect) {
@@ -55,7 +57,7 @@ class  Shapes:UIView  {
         Shapes.sunLayer.path = path1.cgPath
         Shapes.sunLayer.lineWidth = self.bounds.size.width*0.1
         Shapes.sunLayer.strokeColor = UIColor.hexStringToUIColor(hex: "#16232B").cgColor
-       // sunLayer.fillColor = UIColor.black.cgColor
+       
         
 
         
@@ -67,7 +69,7 @@ class  Shapes:UIView  {
         
      
         layer.addSublayer(Shapes.monLayer)
-        let path2 = UIBezierPath(arcCenter:CGPoint(x:  self.bounds.size.width*0.5, y: self.bounds.size.height*0.5), radius: self.bounds.size.width*0.4, startAngle: CGFloat(ClockFace.degree2radian(a: 192)), endAngle: CGFloat(ClockFace.degree2radian(a: 212)), clockwise: true)
+        let path2 = UIBezierPath(arcCenter:CGPoint(x:  self.bounds.size.width*0.5, y: self.bounds.size.height*0.5), radius: self.bounds.size.width*0.4, startAngle: CGFloat(ClockFace.degree2radian(a: 193)), endAngle: CGFloat(ClockFace.degree2radian(a: 212)), clockwise: true)
         Shapes.monLayer.path = path2.cgPath
         Shapes.monLayer.lineWidth = self.bounds.size.width*0.1
         Shapes.monLayer.fillColor = UIColor.clear.cgColor
@@ -75,7 +77,7 @@ class  Shapes:UIView  {
 
         
         layer.addSublayer(monBorder)
-        let path12 = UIBezierPath(arcCenter: CGPoint(x:  self.bounds.size.width*0.5, y: self.bounds.size.height*0.5), radius: self.bounds.size.width*0.45, startAngle: CGFloat(ClockFace.degree2radian(a: 192)), endAngle: CGFloat(ClockFace.degree2radian(a: 212)), clockwise: true)
+        let path12 = UIBezierPath(arcCenter: CGPoint(x:  self.bounds.size.width*0.5, y: self.bounds.size.height*0.5), radius: self.bounds.size.width*0.45, startAngle: CGFloat(ClockFace.degree2radian(a: 193)), endAngle: CGFloat(ClockFace.degree2radian(a: 212)), clockwise: true)
         monBorder.path = path12.cgPath
         monBorder.lineWidth = CGFloat(lineWidth)
         monBorder.strokeColor = UIColor.hexStringToUIColor(hex: "#2385D9").cgColor
@@ -98,7 +100,7 @@ class  Shapes:UIView  {
         
         
         layer.addSublayer(Shapes.wedLayer)
-        let path4 = UIBezierPath(arcCenter:CGPoint(x:  self.bounds.size.width*0.5 , y: self.bounds.size.height*0.5), radius: self.bounds.size.width*0.4, startAngle: CGFloat(ClockFace.degree2radian(a: 238)), endAngle: CGFloat(ClockFace.degree2radian(a: 260)), clockwise: true)
+        let path4 = UIBezierPath(arcCenter:CGPoint(x:  self.bounds.size.width*0.5 , y: self.bounds.size.height*0.5), radius: self.bounds.size.width*0.4, startAngle: CGFloat(ClockFace.degree2radian(a: 240)), endAngle: CGFloat(ClockFace.degree2radian(a: 259)), clockwise: true)
         Shapes.wedLayer.path = path4.cgPath
         Shapes.wedLayer.lineWidth = self.bounds.size.width*0.1
         Shapes.wedLayer.fillColor = UIColor.clear.cgColor
@@ -106,7 +108,7 @@ class  Shapes:UIView  {
 
         
         layer.addSublayer(wedBorder)
-        let path14 = UIBezierPath(arcCenter: CGPoint(x:  self.bounds.size.width*0.5, y: self.bounds.size.height*0.5), radius: self.bounds.size.width*0.45, startAngle: CGFloat(ClockFace.degree2radian(a: 238)), endAngle: CGFloat(ClockFace.degree2radian(a: 260)), clockwise: true)
+        let path14 = UIBezierPath(arcCenter: CGPoint(x:  self.bounds.size.width*0.5, y: self.bounds.size.height*0.5), radius: self.bounds.size.width*0.45, startAngle: CGFloat(ClockFace.degree2radian(a: 240)), endAngle: CGFloat(ClockFace.degree2radian(a: 259)), clockwise: true)
         wedBorder.path = path14.cgPath
         wedBorder.lineWidth = CGFloat(lineWidth)
         wedBorder.strokeColor = UIColor.hexStringToUIColor(hex: "#2385D9").cgColor
@@ -128,7 +130,7 @@ class  Shapes:UIView  {
         
         
         layer.addSublayer(Shapes.friLayer)
-        let path6 = UIBezierPath(arcCenter:CGPoint(x:  self.bounds.size.width*0.5 , y: self.bounds.size.height*0.5), radius: self.bounds.size.width*0.4, startAngle: CGFloat(ClockFace.degree2radian(a: 285)), endAngle: CGFloat(ClockFace.degree2radian(a: 305)), clockwise: true)
+        let path6 = UIBezierPath(arcCenter:CGPoint(x:  self.bounds.size.width*0.5 , y: self.bounds.size.height*0.5), radius: self.bounds.size.width*0.4, startAngle: CGFloat(ClockFace.degree2radian(a: 286)), endAngle: CGFloat(ClockFace.degree2radian(a: 305)), clockwise: true)
         Shapes.friLayer.path = path6.cgPath
         Shapes.friLayer.lineWidth = self.bounds.size.width*0.1
         Shapes.friLayer.fillColor = UIColor.clear.cgColor
@@ -136,14 +138,14 @@ class  Shapes:UIView  {
 
         
         layer.addSublayer(friBorder)
-        let path16 = UIBezierPath(arcCenter: CGPoint(x:  self.bounds.size.width*0.5, y: self.bounds.size.height*0.5), radius: self.bounds.size.width*0.45, startAngle: CGFloat(ClockFace.degree2radian(a: 285)), endAngle: CGFloat(ClockFace.degree2radian(a: 305)), clockwise: true)
+        let path16 = UIBezierPath(arcCenter: CGPoint(x:  self.bounds.size.width*0.5, y: self.bounds.size.height*0.5), radius: self.bounds.size.width*0.45, startAngle: CGFloat(ClockFace.degree2radian(a: 286)), endAngle: CGFloat(ClockFace.degree2radian(a: 305)), clockwise: true)
         friBorder.path = path16.cgPath
         friBorder.lineWidth = CGFloat(lineWidth)
         friBorder.strokeColor = UIColor.hexStringToUIColor(hex: "#2385D9").cgColor
         
         
         layer.addSublayer(Shapes.satLayer)
-        let path7 = UIBezierPath(arcCenter:CGPoint(x:  self.bounds.size.width*0.5 , y: self.bounds.size.height*0.5), radius: self.bounds.size.width*0.4, startAngle: CGFloat(ClockFace.degree2radian(a: 307)), endAngle: CGFloat(ClockFace.degree2radian(a: 328)), clockwise: true)
+        let path7 = UIBezierPath(arcCenter:CGPoint(x:  self.bounds.size.width*0.5 , y: self.bounds.size.height*0.5), radius: self.bounds.size.width*0.4, startAngle: CGFloat(ClockFace.degree2radian(a: 308)), endAngle: CGFloat(ClockFace.degree2radian(a: 327)), clockwise: true)
         Shapes.satLayer.path = path7.cgPath
         Shapes.satLayer.lineWidth = self.bounds.size.width*0.1
         Shapes.satLayer.fillColor = UIColor.clear.cgColor
@@ -151,7 +153,7 @@ class  Shapes:UIView  {
   
         
         layer.addSublayer(satBorder)
-        let path17 = UIBezierPath(arcCenter: CGPoint(x:  self.bounds.size.width*0.5, y: self.bounds.size.height*0.5), radius: self.bounds.size.width*0.45, startAngle: CGFloat(ClockFace.degree2radian(a: 307)), endAngle: CGFloat(ClockFace.degree2radian(a: 328)), clockwise: true)
+        let path17 = UIBezierPath(arcCenter: CGPoint(x:  self.bounds.size.width*0.5, y: self.bounds.size.height*0.5), radius: self.bounds.size.width*0.45, startAngle: CGFloat(ClockFace.degree2radian(a: 308)), endAngle: CGFloat(ClockFace.degree2radian(a: 327)), clockwise: true)
         satBorder.path = path17.cgPath
         satBorder.lineWidth = CGFloat(lineWidth)
         satBorder.strokeColor = UIColor.hexStringToUIColor(hex: "#2385D9").cgColor

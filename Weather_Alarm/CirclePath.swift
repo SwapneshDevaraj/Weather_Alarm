@@ -40,7 +40,9 @@ class CirclePath: UIView {
     
     var alertMsg = ""
     
-    var minuteRadian :Double!
+    var minuteRadian: Double = 0.0
+    
+    var minVariable:Double?
     
     
     override init(frame: CGRect)
@@ -185,7 +187,7 @@ class CirclePath: UIView {
             let dy = location.y - self.center.y
             
             let angle = atan2(dy, dx)
-            print("Starting anle \(CirclePath.startingAngle)")
+          
             print("ANgle is \(angle)")
             angleDifference = CirclePath.startingAngle! - angle
             print("Angle diff \(Double(angleDifference!).rounded(toPlaces: 2))")
@@ -217,22 +219,92 @@ class CirclePath: UIView {
     {
         
         flag1 = nil
+//        for firsttouch in touches {
+//            
+//            let location = firsttouch.location(in:self)
+//            let dx = location.x - self.center.x
+//            let dy = location.y - self.center.y
+//            
+//            let angle = atan2(dy, dx)
+//            print("ANgle in ended \(Double(angle).rounded(toPlaces: 2))")
+//            angleDifference = CirclePath.startingAngle! - angle
+//            print("Angle diff in ended \(Double(angleDifference!).rounded(toPlaces: 2))")
+//        }
+//        
+        var dictArr = Array(arr.keys)
+        dictArr = dictArr.sorted()
         
-        if var rad = Double(PowerButton.time2Label.text!)
+        for (i, _) in dictArr.enumerated()
         {
-            rad = rad / 5
+            var ans :Double
             
-            print ("rad = \(rad)")
             
-            let radans = abs(rad - minuteRadian)
-            print("radans = \(radans)")
-            
-            if (minuteRadian - (rad+0.5))/2 >= radans
+            if (i <= (dictArr.count - 2) && minuteRadian >= dictArr[i] && minuteRadian <= dictArr[i+1])
             {
-                print(" final =  \((arr[minuteRadian]!*5) + 1)")
-                PowerButton.time2Label.text = "\((arr[minuteRadian]!*5) + 1)"
+                ans = (dictArr[i] + dictArr[i+1])/2
+                
+                if (minuteRadian <  ans)
+                {
+                    
+                    if((arr[dictArr[i]]!*5) == 60)
+                    {
+                        PowerButton.time2Label.text =  "00"
+                        
+                    }
+                    else
+                    {
+                        PowerButton.time2Label.text =  "\((arr[dictArr[i]]!*5))"
+                       
+                    }
+                    
+                }
+                else
+                {
+                    if((arr[dictArr[i+1]]!*5) == 60)
+                    {
+                        PowerButton.time2Label.text =  "00"
+                                            }
+                    else
+                    {
+                        PowerButton.time2Label.text = "\((arr[dictArr[i+1]]!*5))"
+                        
+                    }
+                    
+                    
+                }
+                
+            }
+            else{
+
+                
+                if(minuteRadian <= Double(-2.6) && minuteRadian >= Double(-3.1))
+                {
+                    
+                    ans = -2.85
+                    
+                    
+                    
+                    if (minuteRadian <  ans)
+                    {
+                        
+                       
+                        
+                            PowerButton.time2Label.text =  "\((arr[dictArr[i]]!*5))"
+                        
+                    }
+                    else
+                    {
+                        PowerButton.time2Label.text = "\((arr[dictArr[0]]!*5))"
+                        
+                        
+                        
+                    }
+                    
+                }
             }
         }
+        
+        
     }
     func distancefromCentre(point:CGPoint) -> CGFloat
     {
@@ -249,6 +321,7 @@ class CirclePath: UIView {
     func updateMinuteLabel(radian : Double)
         
     {
+        
         minuteRadian = radian
         
         if arr.index(forKey: radian) == nil {
@@ -259,15 +332,12 @@ class CirclePath: UIView {
             
         else
             
-                if(arr[radian]!*5 == 60)
-                {
-                    PowerButton.time2Label.text = "00"
-                }
-                else
-                {
-                    PowerButton.time2Label.text = "\(arr[radian]!*5 )"
-                    
-                }
+        {
+            if(arr[radian]!*5 == 60)
+                
+            {
+                
+                PowerButton.time2Label.text = "00"
                 
             }
                 

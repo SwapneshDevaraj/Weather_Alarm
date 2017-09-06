@@ -46,7 +46,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.view.addSubview(mainView)
         self.view.addSubview(returnButton)
         
+        alaramView.powerButton.setButton.addTarget(self, action: #selector(setAlarm), for: UIControlEvents.touchUpInside)
+        
         weatherView.baseCircle.start()
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.backgroundColor = UIColor.clear
+        tableView.rowHeight = 50
+        alaramView.addSubview(tableView)
+        
+       
     }
     
     func tap () {
@@ -97,8 +107,69 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
         alaramView.frame = self.view.frame
         weatherView.frame = self.view.frame
+        
+        
+            self.view.bringSubview(toFront: returnButton)
+          
+            tableView.frame = CGRect(x: 0, y: alaramView.frame.size.height*0.8, width: alaramView.frame.size.width, height: alaramView.frame.size.height*0.2)
+        }
+       
+        
+    
+    func printAlert(msg: String)
+    {
+        
+        let alert = UIAlertController(title: "Alarm Set", message: msg, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    
+    
+    func setAlarm()
+    {
+        let removeColon = " :"
+        var hour = (PowerButton.timeLabel.text ?? "00")
+        
+        if let rang = hour.range(of: removeColon){
+            hour.removeSubrange(rang)
+        }
+        
+        let min = (PowerButton.time2Label.text ?? "00")
+        
+        var time = ""
+        
+        var myHr:Int = 00
+
+        if alaramView.powerButton.ampmButton.isOn
+        {
+            time = "AM"
             
-        self.view.bringSubview(toFront: returnButton)
+           myHr = Int(hour)!
+        }
+        else{
+            time = "PM"
+           myHr = ((Int(hour))! + 12)
+        }
+        
+        let myMin = Int(min)!
+        
+        
+        var alarmMsg = "\(hour):\(min) \(time) \n"
+
+        alarmMsg += AlarmNotification.alarmDays
+        print(alarmMsg)
+        
+        let alarmForAraray = "\(hour):\(min) \(time) \(AlarmNotification.alarmDays)"
+        
+        print(alarmForAraray)
+        if !(alarms.contains(alarmForAraray)){
+            printAlert(msg: alarmMsg)
+            count += 1
+            alarms.append("\(hour):\(min) \(time) \(AlarmNotification.alarmDays)")
+        }else{
+            printAlert(msg: "Alarm already exists")
+        }
         
         
 //        printAlert(msg: alarmMsg)
@@ -173,8 +244,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return alarms.count
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
       //  var cell = UITableViewCell(style: UITableViewCellStyle.value1, reuseIdentifier: "Cell")
         var cell:UITableViewCell! = UITableViewCell(style: UITableViewCellStyle.value1, reuseIdentifier: "Cell")
         if(cell == nil){
@@ -187,9 +259,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         return cell
     }
+}
     
    
-}
+
 
 
 
