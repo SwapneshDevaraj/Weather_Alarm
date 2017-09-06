@@ -52,8 +52,7 @@ class BaseCircle: UIView {
         
         animation = CABasicAnimation(keyPath: "strokeEnd")
         
-       // self.animateCircle()
-        self.start()
+      
         
     }
     
@@ -138,6 +137,7 @@ class BaseCircle: UIView {
         {
             if(boolTest)
             {
+                print("in boolTest")
                 boolTest = false
                 
                 let now = Date()
