@@ -8,8 +8,10 @@
 //
 
 import UIKit
+import UserNotifications
+import UserNotificationsUI
 
-class ViewController: UIViewController
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
  
     private var showingBack = false
@@ -19,10 +21,15 @@ class ViewController: UIViewController
     var weatherView = WeatherTimeView()
     var alaramView = CirclePath()
     let returnButton = UIButton()
-    
     let mainView = UIView()
     
+    let requestIdentifier = "MorningAlarm"
     
+    var dateInfo = DateComponents()
+    var count = 0
+    var alarms = [String]()
+    
+    let tableView: UITableView = UITableView()
     
     override func viewDidLoad()
     {
@@ -94,7 +101,114 @@ class ViewController: UIViewController
         self.view.bringSubview(toFront: returnButton)
         
         
+//        printAlert(msg: alarmMsg)
+//        count += 1
+//        alarms.append("Alarm-\(count)\(hour):\(min) \(time) \(AlarmNotification.alarmDays)")
+
+        
+        tableView.reloadData()
+        
+        //defaults.set("\(alarmMsg)", forKey: "Alarm-\(count)")
+       // print( "print the default value Alarm - \(defaults.string(forKey: "Alarm-\(count)") ?? "error")")
+        dump(alarms)
+   self.scheduleLocalNotification(myHour: myHr , myMinute: myMin)
+        
+    }
+    
+    
+    func scheduleLocalNotification(myHour:Int? ,myMinute:Int?)
+    {
+        //print("inside notification")
+        //let answer1 = UNNotificationAction(identifier: "Answer 1", title: "Dismiss", options: UNNotificationActionOptions.foreground)
+        
+        //create notofication
+        let content = UNMutableNotificationContent()
+        content.title = NSString.localizedUserNotificationString(forKey: "Wake up!", arguments: nil)
+        content.body = NSString.localizedUserNotificationString(forKey: "Rise and shine! It's morning time!",
+                                                                arguments: nil)
+        content.badge = 1
+        content.sound = UNNotificationSound.default()
+            //UNNotificationSound(named:"Glorious.mp3")
+        
+       dateInfo.calendar = Calendar.autoupdatingCurrent
+        
+        //let calender = Calendar.autoupdatingCurrent
+        
+       // dateInfo.month = dateInfo.month
+        dateInfo.weekday = 2
+        
+        dateInfo.hour = myHour
+        dateInfo.minute = myMinute
+        
+        
+        // Configure the trigger for a 7am wakeup.
+        
+        let triggerTimer = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        
+       // let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: false)
+        
+        // Create the request object.
+        let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: triggerTimer)
+       
+        
+        
+        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().add(request){(error : Error?) in
+            
+            if let theError = error {
+                print(theError.localizedDescription)
+            }
+        }
+        
+    }
+  
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.rowHeight
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return tableView.rowHeight
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return alarms.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+      //  var cell = UITableViewCell(style: UITableViewCellStyle.value1, reuseIdentifier: "Cell")
+        var cell:UITableViewCell! = UITableViewCell(style: UITableViewCellStyle.value1, reuseIdentifier: "Cell")
+        if(cell == nil){
+            cell = UITableViewCell.init(style: .default, reuseIdentifier: "Cell")
+        }
+        cell.textLabel!.text = alarms[indexPath.row]
+        
+        cell.backgroundColor = .clear
+        cell.textLabel?.textColor = UIColor.myGrey
+        
+        return cell
+    }
+    
+   
+}
+
+
+
+
+
+extension ViewController:UNUserNotificationCenterDelegate{
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        print("Notification being triggered in foreground")
+        //You can either present alert ,sound or increase badge while the app is in foreground too with ios 10
+        //to distinguish between notifications
+        if notification.request.identifier == requestIdentifier{
+            
+            completionHandler( [.alert,.sound,.badge])
+            
+        }
     }
     
 }
+
 

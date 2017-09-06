@@ -19,13 +19,6 @@ class Days: UIView
     var friButton =  ButtonProp()
     var satButton =  ButtonProp()
 
-    var sunView = UIView()
-    var monView = UIView()
-    var tueView = UIView()
-    var wedView = UIView()
-    var thurView = UIView()
-    var friView = UIView()
-    var satView = UIView()
   
     let buttoObj = ButtonProp()
     
@@ -35,7 +28,9 @@ class Days: UIView
        
         sunButton.backgroundColor = .clear
         sunButton.setTitle("Sun", for: .normal)
-        sunButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 15)
+       // sunButton.titleLabel?.adjustsFontSizeToFitWidth = true
+       
+       sunButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 15)
         sunButton.tag = 1
         sunButton.showsTouchWhenHighlighted = true
         sunButton.clipsToBounds = true
@@ -44,6 +39,7 @@ class Days: UIView
         monButton.backgroundColor = .clear
         monButton.tag = 2
         monButton.setTitle("Mon", for: .normal)
+        monButton.titleLabel?.adjustsFontSizeToFitWidth = true
         monButton.clipsToBounds = true
         monButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 15)
         monButton.showsTouchWhenHighlighted = true
@@ -53,14 +49,17 @@ class Days: UIView
         tueButton.backgroundColor = .clear
         tueButton.tag = 3
         tueButton.setTitle("Tue", for: .normal)
+        tueButton.titleLabel?.adjustsFontSizeToFitWidth = true
         tueButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 15)
         tueButton.showsTouchWhenHighlighted = true
         tueButton.clipsToBounds = true
         tueButton.addTarget(self, action: #selector(togglePressed(button:)), for: UIControlEvents.touchUpInside)
         
         wedButton.backgroundColor = .clear
+       // wedButton.alpha = 0.3
         wedButton.tag = 4
         wedButton.showsTouchWhenHighlighted = true
+        wedButton.titleLabel?.adjustsFontSizeToFitWidth = true
         wedButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 15)
         wedButton.setTitle("Wed", for: .normal)
         wedButton.clipsToBounds = true
@@ -70,6 +69,7 @@ class Days: UIView
         thurButton.tag = 5
         thurButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 15)
         thurButton.setTitle("Thu", for: .normal)
+        thurButton.titleLabel?.adjustsFontSizeToFitWidth = true
         thurButton.showsTouchWhenHighlighted = true
         thurButton.clipsToBounds = true
         thurButton.addTarget(self, action: #selector(togglePressed(button:)), for: UIControlEvents.touchUpInside)
@@ -78,6 +78,7 @@ class Days: UIView
         friButton.tag = 6
         friButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 15)
         friButton.setTitle("Fri", for: .normal)
+        friButton.titleLabel?.adjustsFontSizeToFitWidth = true
         friButton.showsTouchWhenHighlighted = true
         friButton.clipsToBounds = true
         friButton.addTarget(self, action: #selector(togglePressed(button:)), for: UIControlEvents.touchUpInside)
@@ -86,50 +87,51 @@ class Days: UIView
         satButton.tag = 7
         satButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 15)
         satButton.setTitle("Sat", for: .normal)
+        satButton.titleLabel?.adjustsFontSizeToFitWidth = true
         satButton.showsTouchWhenHighlighted = true
         satButton.clipsToBounds = true
         satButton.addTarget(self, action: #selector(togglePressed(button:)), for: UIControlEvents.touchUpInside)
         
         //
-        sunView.backgroundColor = .clear
-        sunView.transform = CGAffineTransform(rotationAngle: ClockFace.degree2radian(a: 270))
-        self.addSubview(sunView)
-        sunView.addSubview(sunButton)
+      
+        sunButton.transform = CGAffineTransform(rotationAngle: ClockFace.degree2radian(a: 270))
+       
+        self.addSubview(sunButton)
         
         //
-        monView.backgroundColor = .clear
-        monView.transform = CGAffineTransform(rotationAngle: ClockFace.degree2radian(a: 290))
-        self.addSubview(monView)
-        monView.addSubview(monButton)
+       
+        monButton.transform = CGAffineTransform(rotationAngle: ClockFace.degree2radian(a: 290))
+       
+        self.addSubview(monButton)
         
         //
-        tueView.backgroundColor = .clear
-        tueView.transform = CGAffineTransform(rotationAngle: ClockFace.degree2radian(a: 310))
-        self.addSubview(tueView)
-        tueView.addSubview(tueButton)
+        
+        tueButton.transform = CGAffineTransform(rotationAngle: ClockFace.degree2radian(a: 310))
+        
+        self.addSubview(tueButton)
         
         //
-        wedView.backgroundColor = .clear
-        wedView.transform = CGAffineTransform(rotationAngle: ClockFace.degree2radian(a: 340))
-        self.addSubview(wedView)
-        wedView.addSubview(wedButton)
+      
+        wedButton.transform = CGAffineTransform(rotationAngle: ClockFace.degree2radian(a: 340))
+      
+        self.addSubview(wedButton)
         
         //
-        thurView.backgroundColor = .clear
-        self.addSubview(thurView)
-        thurView.addSubview(thurButton)
+        
+        
+        self.addSubview(thurButton)
         
         //
-        friView.backgroundColor = .clear
-        friView.transform = CGAffineTransform(rotationAngle: ClockFace.degree2radian(a: 25))
-        self.addSubview(friView)
-        friView.addSubview(friButton)
+        
+        friButton.transform = CGAffineTransform(rotationAngle: ClockFace.degree2radian(a: 25))
+       
+        self.addSubview(friButton)
         
         //
-        satView.backgroundColor = .clear
-        satView.transform = CGAffineTransform(rotationAngle: ClockFace.degree2radian(a: 45))
-        self.addSubview(satView)
-        satView.addSubview(satButton)
+       
+        satButton.transform = CGAffineTransform(rotationAngle: ClockFace.degree2radian(a: 45))
+      
+        self.addSubview(satButton)
         
     }
     
@@ -142,56 +144,42 @@ class Days: UIView
         super.layoutSubviews()
         self.isUserInteractionEnabled = true
         
-        let buttonsize  = self.bounds.size.width*0.14
+        let buttonsize  = self.bounds.size.width*0.138
         
         //sunday
-        sunView.bounds = CGRect(x: 0.0, y: 0.0, width: buttonsize*0.8, height: buttonsize*0.8)
-        sunView.center = CGPoint(x: self.bounds.size.width*0.1, y: self.bounds.size.height*0.5)
-      
+        
         sunButton.bounds = CGRect(x: 0.0, y: 0.0, width:buttonsize , height:buttonsize)
-        sunButton.center = CGPoint(x: sunView.bounds.size.width*0.5 , y: sunView.bounds.size.height*0.5)
+        sunButton.center = CGPoint(x: self.bounds.size.width*0.1, y: self.bounds.size.height*0.55)
         
         //monday
-        monView.bounds = CGRect(x: 0.0, y: 0.0, width: buttonsize*0.8, height: buttonsize*0.8)
-        monView.center = CGPoint(x: self.bounds.size.width*0.13, y: self.bounds.size.height*0.415)
-        
+      
         monButton.bounds = CGRect(x: 0.0, y: 0.0, width: buttonsize, height: buttonsize)
-        monButton.center = CGPoint(x: monView.bounds.size.width*0.5, y: monView.bounds.size.height*0.5)
+        monButton.center = CGPoint(x: self.bounds.size.width*0.13, y: self.bounds.size.height*0.46)
         
         //tuesday
-        tueView.bounds = CGRect(x: 0.0, y: 0.0, width: buttonsize*0.8, height: buttonsize*0.8)
-        tueView.center = CGPoint(x: self.bounds.size.width*0.22, y: self.bounds.size.height*0.336)
         
         tueButton.bounds = CGRect(x: 0.0, y: 0.0, width: buttonsize, height: buttonsize)
-        tueButton.center = CGPoint(x: tueView.bounds.size.width*0.4, y: tueView.bounds.size.height*0.5)
+        tueButton.center = CGPoint(x: self.bounds.size.width*0.22, y: self.bounds.size.height*0.39)
         
         //wednesday
-        wedView.bounds = CGRect(x: 0.0 ,y: 0.0, width: buttonsize*0.8, height: buttonsize*0.8)
-        wedView.center = CGPoint(x: self.bounds.size.width*0.36, y: self.bounds.size.height*0.285)
-        
+       
         wedButton.bounds = CGRect(x: 0.0 ,y: 0.0, width: buttonsize, height: buttonsize)
-        wedButton.center = CGPoint(x: wedView.bounds.size.width*0.4, y: wedView.bounds.size.height*0.55)
+        wedButton.center = CGPoint(x: self.bounds.size.width*0.36, y: self.bounds.size.height*0.34)
         
         //thursday
-        thurView.bounds = CGRect(x: 0.0 ,y: 0.0 , width: buttonsize*0.8, height: buttonsize*0.8)
-        thurView.center = CGPoint(x: self.bounds.size.width*0.525, y: self.bounds.size.height*0.275)
         
         thurButton.bounds = CGRect(x: 0.0 ,y: 0.0 , width: buttonsize, height: buttonsize)
-        thurButton.center = CGPoint(x: thurView.bounds.size.width*0.4, y: thurView.bounds.size.height*0.5)
+        thurButton.center = CGPoint(x: self.bounds.size.width*0.525, y: self.bounds.size.height*0.33)
         
         //friday
-        friView.bounds = CGRect(x: 0.0 ,y: 0.0 , width: buttonsize*0.8, height: buttonsize*0.8)
-        friView.center = CGPoint(x: self.bounds.size.width*0.68, y: self.bounds.size.height*0.3)
         
         friButton.bounds = CGRect(x: 0.0 ,y: 0.0 , width: buttonsize, height: buttonsize)
-        friButton.center = CGPoint(x: friView.bounds.size.width*0.4, y: friView.bounds.size.height*0.5)
+        friButton.center = CGPoint(x: self.bounds.size.width*0.68, y: self.bounds.size.height*0.35)
         
         //Saturday
-        satView.bounds = CGRect(x: 0.0 ,y: 0.0, width: buttonsize*0.8, height: buttonsize*0.8)
-        satView.center = CGPoint(x: self.bounds.size.width*0.8, y: self.bounds.size.height*0.35)
         
         satButton.bounds = CGRect(x: 0.0 ,y: 0.0, width: buttonsize, height: buttonsize)
-        satButton.center = CGPoint(x: satView.bounds.size.width*0.5, y: satView.bounds.size.height*0.5)
+        satButton.center = CGPoint(x: self.bounds.size.width*0.8, y: self.bounds.size.height*0.4)
 
        
     }

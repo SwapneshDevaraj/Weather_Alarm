@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C8D888B1F5D54C5002A4136 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C8D888A1F5D54C5002A4136 /* AVFoundation.framework */; };
 		0CAFAFAA1F39DEF1007EBB26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAFAFA91F39DEF1007EBB26 /* AppDelegate.swift */; };
 		0CAFAFAF1F39DEF1007EBB26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CAFAFAD1F39DEF1007EBB26 /* Main.storyboard */; };
 		0CAFAFB11F39DEF1007EBB26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CAFAFB01F39DEF1007EBB26 /* Assets.xcassets */; };
@@ -31,6 +32,8 @@
 		7F777E6D1F568B5100B9376F /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F777E6C1F568B5100B9376F /* UIButtonExtension.swift */; };
 		7F777E6F1F568B5B00B9376F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F777E6E1F568B5B00B9376F /* ViewController.swift */; };
 		7F777E711F568BE300B9376F /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F777E701F568BE300B9376F /* Shapes.swift */; };
+		7F833EB81F57E86B003A0454 /* AlarmNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F833EB71F57E86B003A0454 /* AlarmNotification.swift */; };
+		7F8920101F592F7200F3EA86 /* Glorious.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7F89200F1F592F7200F3EA86 /* Glorious.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C8D888A1F5D54C5002A4136 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		0CAFAFA61F39DEF1007EBB26 /* Weather_Alarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather_Alarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CAFAFA91F39DEF1007EBB26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CAFAFAE1F39DEF1007EBB26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -81,6 +85,8 @@
 		7F777E6C1F568B5100B9376F /* UIButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		7F777E6E1F568B5B00B9376F /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7F777E701F568BE300B9376F /* Shapes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
+		7F833EB71F57E86B003A0454 /* AlarmNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmNotification.swift; sourceTree = "<group>"; };
+		7F89200F1F592F7200F3EA86 /* Glorious.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Glorious.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C8D888B1F5D54C5002A4136 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,8 +133,17 @@
 			isa = PBXGroup;
 			children = (
 				7F777E541F568AE500B9376F /* ClockFace.swift */,
+				7F833EB71F57E86B003A0454 /* AlarmNotification.swift */,
 			);
 			name = Utils;
+			sourceTree = "<group>";
+		};
+		0C8D88891F5D54C4002A4136 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0C8D888A1F5D54C5002A4136 /* AVFoundation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		0CAFAF9D1F39DEF1007EBB26 = {
@@ -137,6 +153,7 @@
 				0CAFAFBD1F39DEF1007EBB26 /* Weather_AlarmTests */,
 				0CAFAFC81F39DEF1007EBB26 /* Weather_AlarmUITests */,
 				0CAFAFA71F39DEF1007EBB26 /* Products */,
+				0C8D88891F5D54C4002A4136 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -161,6 +178,7 @@
 				7F777E6E1F568B5B00B9376F /* ViewController.swift */,
 				0CAFAFAD1F39DEF1007EBB26 /* Main.storyboard */,
 				0CAFAFB01F39DEF1007EBB26 /* Assets.xcassets */,
+				7F89200F1F592F7200F3EA86 /* Glorious.mp3 */,
 				0CAFAFB21F39DEF1007EBB26 /* LaunchScreen.storyboard */,
 				0CAFAFB51F39DEF1007EBB26 /* Info.plist */,
 			);
@@ -318,6 +336,7 @@
 			files = (
 				0CAFAFB41F39DEF1007EBB26 /* LaunchScreen.storyboard in Resources */,
 				0CAFAFB11F39DEF1007EBB26 /* Assets.xcassets in Resources */,
+				7F8920101F592F7200F3EA86 /* Glorious.mp3 in Resources */,
 				0CAFAFAF1F39DEF1007EBB26 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -357,6 +376,7 @@
 				7F777E651F568B3000B9376F /* ReturnButton.swift in Sources */,
 				7F777E711F568BE300B9376F /* Shapes.swift in Sources */,
 				7F777E591F568B0700B9376F /* CirclePath.swift in Sources */,
+				7F833EB81F57E86B003A0454 /* AlarmNotification.swift in Sources */,
 				7F777E5B1F568B0B00B9376F /* MinuteCircle.swift in Sources */,
 				7F777E691F568B4800B9376F /* NSShadowExtension.swift in Sources */,
 				0CAFAFAA1F39DEF1007EBB26 /* AppDelegate.swift in Sources */,

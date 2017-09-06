@@ -23,6 +23,7 @@ class CirclePath: UIView {
     var powerButton = PowerButton()
     var days = Days()
     var shapes = Shapes()
+    let alarmNotification = AlarmNotification()
     
     
     var angleDifference: CGFloat?
@@ -35,7 +36,7 @@ class CirclePath: UIView {
     var count = 0
     var arr : [Double : Int]!
     var viewArray = [UIView]()
-     var someInt = 0
+    var someInt = 0
     
     var alertMsg = ""
     
@@ -46,8 +47,8 @@ class CirclePath: UIView {
     {
         super.init(frame: frame)
         
-       
-
+        
+        
         minCircle.backgroundColor = UIColor.hexStringToUIColor(hex: "#1E282A")
         minCircle.clipsToBounds = true
         addSubview(minCircle)
@@ -59,8 +60,8 @@ class CirclePath: UIView {
         days.backgroundColor = .clear
         days.clipsToBounds = true
         addSubview(days)
-
-       
+        
+        
         
         hourCircle.backgroundColor = UIColor.hexStringToUIColor(hex: "#424D4F")
         hourCircle.clipsToBounds = true
@@ -74,7 +75,12 @@ class CirclePath: UIView {
         
         
         
+        
+        
+        
     }
+    
+    
     
     
     required init?(coder aDecoder: NSCoder) {
@@ -85,29 +91,31 @@ class CirclePath: UIView {
     override func layoutSubviews()
     {
         super.layoutSubviews()
-
-                minCircle.bounds = CGRect(x:0.0 , y: 0.0, width: self.bounds.size.width*0.66, height: self.bounds.size.width*0.66)
-                minCircle.center = CGPoint(x: self.bounds.size.width*0.5, y: self.bounds.size.height*0.5)
-                minCircle.layer.cornerRadius = minCircle.bounds.size.width*0.5
-                
-                hourCircle.bounds = CGRect(x: 0.0, y: 0, width: self.bounds.size.width*0.45, height: self
-                    .bounds.size.width*0.45)
-                hourCircle.center = CGPoint(x: self.bounds.size.width*0.5, y: self.bounds.size.height*0.5)
-                hourCircle.layer.cornerRadius = hourCircle.bounds.size.width*0.5
-                
-                powerButton.bounds = CGRect(x: 0.0, y: 0.0, width: self.bounds.size.width*0.55, height:self.bounds.size.width*0.2)
-                powerButton.center = CGPoint(x: self.bounds.midX + self.bounds.midX*0.4, y: self.bounds.size.height*0.5)
-                powerButton.layer.cornerRadius = powerButton.bounds.size.width*0.5
-                
-                days.bounds = CGRect(x: 0.0, y: 0.0, width: self.bounds.size.width, height: self.bounds.size.height)
-                days.center = CGPoint(x: self.bounds.size.width*0.5, y: self.bounds.size.height*0.5)
-                
-                shapes.bounds = CGRect(x: 0.0, y: 0.0, width: self.bounds.size.width, height: self.bounds.size.height)
-                shapes.center = CGPoint(x: self.bounds.size.width*0.5, y: self.bounds.size.height*0.5)
-                
-               
+        
+        minCircle.bounds = CGRect(x:0.0 , y: 0.0, width: self.bounds.size.width*0.66, height: self.bounds.size.width*0.66)
+        minCircle.center = CGPoint(x: self.bounds.size.width*0.5, y: self.bounds.size.height*0.5)
+        minCircle.layer.cornerRadius = minCircle.bounds.size.width*0.5
+        
+        hourCircle.bounds = CGRect(x: 0.0, y: 0, width: self.bounds.size.width*0.45, height: self
+            .bounds.size.width*0.45)
+        hourCircle.center = CGPoint(x: self.bounds.size.width*0.5, y: self.bounds.size.height*0.5)
+        hourCircle.layer.cornerRadius = hourCircle.bounds.size.width*0.5
+        
+        powerButton.bounds = CGRect(x: 0.0, y: 0.0, width: self.bounds.size.width*0.55, height:self.bounds.size.width*0.2)
+        powerButton.center = CGPoint(x: self.bounds.midX + self.bounds.midX*0.4, y: self.bounds.size.height*0.5)
+        powerButton.layer.cornerRadius = powerButton.bounds.size.width*0.5
+        
+        days.bounds = CGRect(x: 0.0, y: 0.0, width: self.bounds.size.width, height: self.bounds.size.height)
+        days.center = CGPoint(x: self.bounds.size.width*0.5, y: self.bounds.size.height*0.45)
+        
+        shapes.bounds = CGRect(x: 0.0, y: 0.0, width: self.bounds.size.width, height: self.bounds.size.height)
+        shapes.center = CGPoint(x: self.bounds.size.width*0.5, y: self.bounds.size.height*0.5)
+        
+        
+        
+        
     }
-  
+    
     func getMyValues() -> [Double:Int]
     {
         
@@ -129,7 +137,7 @@ class CirclePath: UIView {
         
         return newArr
     }
-
+    
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
@@ -138,22 +146,22 @@ class CirclePath: UIView {
         for firsttouch in touches {
             if firsttouch == touches.first!{
                 let location = firsttouch.location(in:self)
-
-               for myview in viewArray{
                 
-                if myview.frame.contains(location)
-                {
-                
-                flag1 = true
-                
-                startTransform = minCircle.transform
+                for myview in viewArray{
+                    
+                    if myview.frame.contains(location)
+                    {
+                        
+                        flag1 = true
+                        
+                        startTransform = minCircle.transform
+                    }
                 }
-            }
                 if firsttouch.view == hourCircle.self{
-                
-                flag1 = false
-                
-                startTransform = hourCircle.transform
+                    
+                    flag1 = false
+                    
+                    startTransform = hourCircle.transform
                 }
                 else {
                     
@@ -163,41 +171,51 @@ class CirclePath: UIView {
                 // Store angle
                 
                 CirclePath.startingAngle = atan2(dy, dx)
-             }
+
+            }
         }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?)
     {
         for firsttouch in touches {
-
+            
             let location = firsttouch.location(in:self)
             let dx = location.x - self.center.x
             let dy = location.y - self.center.y
             
             let angle = atan2(dy, dx)
+            print("Starting anle \(CirclePath.startingAngle)")
+            print("ANgle is \(angle)")
             angleDifference = CirclePath.startingAngle! - angle
-            
+            print("Angle diff \(Double(angleDifference!).rounded(toPlaces: 2))")
             if (flag1 == true)
             {
                 let radians = atan2f(Float(minCircle.transform.b), Float(minCircle.transform.a))
+                
+                //print("radians \(Double(radians).rounded(toPlaces: 2))")
                 updateMinuteLabel(radian: Double(radians).rounded(toPlaces: 1))
+                
                 minCircle.transform = CGAffineTransform(rotationAngle: -angleDifference!).concatenating(startTransform)
+                
                 
             }
             else if (flag1 != true && firsttouch.view == hourCircle)
             {
                 let radians = atan2f(Float(hourCircle.transform.b), Float(hourCircle.transform.a))
+                
+                //  print(radians)
                 updateHourLabel(radian: Double(radians).rounded(toPlaces: 1))
+                
                 hourCircle.transform = CGAffineTransform(rotationAngle: -angleDifference!).concatenating(startTransform)
             }
-
+            
         }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)
     {
-    
+        
         flag1 = nil
         
         if var rad = Double(PowerButton.time2Label.text!)
@@ -216,27 +234,30 @@ class CirclePath: UIView {
             }
         }
     }
-    
     func distancefromCentre(point:CGPoint) -> CGFloat
     {
         let center = CGPoint(x: self.frame.size.width*0.5, y: self.frame.size.height*0.5)
+        
         let dx:CGFloat = point.x - center.x;
+        
         let dy:CGFloat = point.y - center.y;
         return CGFloat(sqrtf(Float(dx*dx + dy*dy)))
         
     }
-
-
+    
     
     func updateMinuteLabel(radian : Double)
+        
     {
         minuteRadian = radian
         
         if arr.index(forKey: radian) == nil {
-           // print("the key 'someKey' is NOT in the dictionary")
+            
+            // print("the key 'someKey' is NOT in the dictionary")
+            
         }
+            
         else
-        {
             
                 if(arr[radian]!*5 == 60)
                 {
@@ -249,25 +270,35 @@ class CirclePath: UIView {
                 }
                 
             }
+                
+            else
+                
+            {
+                
+                PowerButton.time2Label.text = "\(arr[radian]!*5 )"
+                
+            }
+            
         }
-    
+        
+    }
     
     
     func updateHourLabel(radian : Double)
     {
         if arr.index(forKey: radian) == nil {
-
+            
         }
         else
         {
-                PowerButton.timeLabel.text = "\(arr[radian] ?? 000) :"
-            }
+            PowerButton.timeLabel.text = "\(arr[radian] ?? 000) :"
+        }
     }
     
-
     
-        
-    }
+    
+    
+}
 
 
 
