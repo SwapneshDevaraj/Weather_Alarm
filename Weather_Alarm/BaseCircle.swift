@@ -23,6 +23,8 @@ class BaseCircle: UIView {
     
     var animation : CABasicAnimation!
     
+    var boolTest  = true
+    
     
     override init(frame: CGRect)
     {
@@ -134,24 +136,53 @@ class BaseCircle: UIView {
         
         let seconds = calendar.component(.second, from:  now)
         
-        let sduration = 60 - seconds
+        var sduration = 60 - seconds
         
         if((timescheduler) != nil){
-            self.invalidateTimer()
+            timescheduler.invalidate()
+            timescheduler = nil
         }
         
-        if(sduration < 60) {
-            timescheduler = Timer.scheduledTimer(timeInterval: TimeInterval(sduration), target: self, selector: #selector(self.start), userInfo: nil, repeats: false)
+        if(sduration < 60)
+        {
+            if(boolTest)
+            {
+                boolTest = false
+                sduration = 1;
+                
+                let now = Date()
+                let calendar = Calendar.current
+                
+                let seconds = calendar.component(.second, from:  now)
+                
+                let ifDuration = 2
+                
+                animation.duration = CFTimeInterval(ifDuration)
+                
+                animation.fromValue = -0.1
+                animation.toValue = Double(seconds+2)/60.0
+                progressBar.add(animation, forKey: "strokeEnd")
+                
+                timescheduler = Timer.scheduledTimer(timeInterval: TimeInterval(ifDuration), target: self, selector: #selector(self.start), userInfo: nil, repeats: false)
+                
+            }
+            else{
+                timescheduler = Timer.scheduledTimer(timeInterval: TimeInterval(sduration), target: self, selector: #selector(self.start), userInfo: nil, repeats: false)
+                self.animateCircle()
+            }
+            
         }
         else {
             timescheduler = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(self.animateCircle), userInfo: nil, repeats: true)
+            self.animateCircle()
         }
-        
-        self.animateCircle()
     }
     
     func invalidateTimer() {
-        timescheduler.invalidate()
+        if(timescheduler != nil){
+            boolTest = true
+            timescheduler.invalidate()
+        }
         timescheduler = nil
     }
     
@@ -161,7 +192,7 @@ class BaseCircle: UIView {
         weatherView.maxTemp.text = maxTemp
         weatherView.minTemp.text = minTemp
         weatherView.location.text = location
-
+        
         weatherView.addShadowtoLabels()
     }
     

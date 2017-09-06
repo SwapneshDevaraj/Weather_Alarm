@@ -26,8 +26,8 @@ class Days: UIView
         super.init(frame: frame)
         self.isUserInteractionEnabled = true
        
-        sunButton.backgroundColor = .clear
-        //sunButton.alpha = 0.6
+        sunButton.backgroundColor = .white
+        sunButton.alpha = 0.6
         sunButton.setTitle("Sun", for: .normal)
        // sunButton.titleLabel?.adjustsFontSizeToFitWidth = true
         sunButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 15)
@@ -36,8 +36,8 @@ class Days: UIView
         sunButton.clipsToBounds = true
         sunButton.addTarget(self, action: #selector(togglePressed(button:)), for: UIControlEvents.touchUpInside)
 
-        monButton.backgroundColor = .clear
-        //monButton.alpha = 0.6
+        monButton.backgroundColor = .white
+        monButton.alpha = 0.6
         monButton.tag = 2
         monButton.setTitle("Mon", for: .normal)
         monButton.titleLabel?.adjustsFontSizeToFitWidth = true
@@ -47,8 +47,8 @@ class Days: UIView
         monButton.addTarget(self, action: #selector(togglePressed(button:)), for: UIControlEvents.touchUpInside)
 
         
-        tueButton.backgroundColor = .clear
-        //tueButton.alpha = 0.6
+        tueButton.backgroundColor = .white
+        tueButton.alpha = 0.6
         tueButton.tag = 3
         tueButton.setTitle("Tue", for: .normal)
         tueButton.titleLabel?.adjustsFontSizeToFitWidth = true
@@ -57,8 +57,8 @@ class Days: UIView
         tueButton.clipsToBounds = true
         tueButton.addTarget(self, action: #selector(togglePressed(button:)), for: UIControlEvents.touchUpInside)
         
-        wedButton.backgroundColor = .clear
-        //wedButton.alpha = 0.6
+        wedButton.backgroundColor = .white
+        wedButton.alpha = 0.6
         wedButton.tag = 4
         wedButton.showsTouchWhenHighlighted = true
         wedButton.titleLabel?.adjustsFontSizeToFitWidth = true
@@ -67,8 +67,8 @@ class Days: UIView
         wedButton.clipsToBounds = true
         wedButton.addTarget(self, action: #selector(togglePressed(button:)), for: UIControlEvents.touchUpInside)
         
-        thurButton.backgroundColor = .clear
-        //thurButton.alpha = 0.6
+        thurButton.backgroundColor = .white
+        thurButton.alpha = 0.6
         thurButton.tag = 5
         thurButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 15)
         thurButton.setTitle("Thu", for: .normal)
@@ -77,8 +77,8 @@ class Days: UIView
         thurButton.clipsToBounds = true
         thurButton.addTarget(self, action: #selector(togglePressed(button:)), for: UIControlEvents.touchUpInside)
         
-        friButton.backgroundColor = .clear
-        //friButton.alpha = 0.6
+        friButton.backgroundColor = .white
+        friButton.alpha = 0.6
         friButton.tag = 6
         friButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 15)
         friButton.setTitle("Fri", for: .normal)
@@ -87,8 +87,8 @@ class Days: UIView
         friButton.clipsToBounds = true
         friButton.addTarget(self, action: #selector(togglePressed(button:)), for: UIControlEvents.touchUpInside)
         
-        satButton.backgroundColor = .clear
-        //satButton.alpha = 0.6
+        satButton.backgroundColor = .white
+        satButton.alpha = 0.6
         satButton.tag = 7
         satButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 15)
         satButton.setTitle("Sat", for: .normal)
@@ -153,8 +153,8 @@ class Days: UIView
         
         //sunday
         
-        sunButton.bounds = CGRect(x: 0.0, y: 0.0, width:buttonsize , height:buttonsize*0.7)
-        sunButton.center = CGPoint(x: self.bounds.size.width*0.1, y: self.bounds.size.height*0.55)
+        sunButton.bounds = CGRect(x: 0.0, y: 0.0, width:buttonsize , height:buttonsize*0.69)
+        sunButton.center = CGPoint(x: self.bounds.size.width*0.105, y: self.bounds.size.height*0.55)
         
         //monday
       
@@ -234,7 +234,7 @@ class Days: UIView
         shapeLayer.frame = button.bounds
         button.backgroundColor = .yellow
         shapeLayer.lineWidth = self.bounds.size.width*0.17
-        shapeLayer.fillColor = UIColor.clear.cgColor
+        shapeLayer.fillColor = UIColor.white.cgColor
         shapeLayer.strokeColor = UIColor.gray.cgColor
         
         layer.addSublayer(shapeLayer)
