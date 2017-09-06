@@ -19,7 +19,7 @@ class BaseCircle: UIView {
     let progressPath = CAShapeLayer()
     let progressBar = CAShapeLayer()
     
-    var timescheduler : Timer!
+    var timescheduler : Timer! = nil
     
     var animation : CABasicAnimation!
     
@@ -31,7 +31,6 @@ class BaseCircle: UIView {
         super.init(frame: frame)
         
         baseCircle.backgroundColor = UIColor.fadedBlack
-        
         
         baseCircle.clipsToBounds = true
         
@@ -53,7 +52,8 @@ class BaseCircle: UIView {
         
         animation = CABasicAnimation(keyPath: "strokeEnd")
         
-        self.animateCircle()
+       // self.animateCircle()
+        self.start()
         
     }
     
@@ -102,24 +102,14 @@ class BaseCircle: UIView {
     }
     
     
-    func animateCircle()
+    func animateCircle(fromVal: Double, sduration: Double, toValue: Double)
     {
-        
-        let now = Date()
-        let calendar = Calendar.current
-        
-        let seconds = calendar.component(.second, from:  now)
-        
-        let sduration = 60 - seconds
-        
         animation.duration = CFTimeInterval(sduration)
         
-        let fromVal : Double = Double(seconds)/60.0
         animation.fromValue = fromVal
-        animation.toValue = 1
+        animation.toValue = toValue
         progressBar.removeAnimation(forKey: "strokeEnd")
         progressBar.add(animation, forKey: "strokeEnd")
-        
         
         timerView.updatetime()
     }
@@ -136,51 +126,60 @@ class BaseCircle: UIView {
         
         let seconds = calendar.component(.second, from:  now)
         
-        var sduration = 60 - seconds
+        let fromVal : Double = Double(seconds)/60.0
         
-        if((timescheduler) != nil){
+        if((timescheduler) != nil)
+        {
             timescheduler.invalidate()
             timescheduler = nil
         }
         
-        if(sduration < 60)
+        if(fromVal < 1)
         {
             if(boolTest)
             {
                 boolTest = false
-                sduration = 1;
                 
                 let now = Date()
                 let calendar = Calendar.current
                 
                 let seconds = calendar.component(.second, from:  now)
+
+                let ifDuration = 4.0
                 
-                let ifDuration = 2
+                let callTimer = ifDuration - 0.05
                 
-                animation.duration = CFTimeInterval(ifDuration)
-                
-                animation.fromValue = -0.1
-                animation.toValue = Double(seconds+2)/60.0
-                progressBar.add(animation, forKey: "strokeEnd")
-                
-                timescheduler = Timer.scheduledTimer(timeInterval: TimeInterval(ifDuration), target: self, selector: #selector(self.start), userInfo: nil, repeats: false)
+                let startval = -0.1
+               
+                self.animateCircle(fromVal: startval, sduration: Double(ifDuration), toValue: Double(seconds+4)/60.0)
+             
+                timescheduler = Timer.scheduledTimer(timeInterval: TimeInterval(callTimer), target: self, selector: #selector(self.start), userInfo: nil, repeats: false)
                 
             }
-            else{
+            else
+            {
+                let sduration = 60 - seconds
                 timescheduler = Timer.scheduledTimer(timeInterval: TimeInterval(sduration), target: self, selector: #selector(self.start), userInfo: nil, repeats: false)
-                self.animateCircle()
+                self.animateCircle(fromVal: fromVal, sduration: Double(sduration), toValue: 1)
             }
             
         }
-        else {
-            timescheduler = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(self.animateCircle), userInfo: nil, repeats: true)
-            self.animateCircle()
+        else
+        {
+            timescheduler = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(self.callAnimation), userInfo: nil, repeats: true)
+            
         }
     }
     
+    func callAnimation()
+    {
+        self.animateCircle(fromVal: 0, sduration: 60, toValue: 1)
+    }
+    
+    
     func invalidateTimer() {
         if(timescheduler != nil){
-            boolTest = true
+           boolTest = true
             timescheduler.invalidate()
         }
         timescheduler = nil

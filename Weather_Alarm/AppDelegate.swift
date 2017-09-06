@@ -10,6 +10,7 @@ import UIKit
 import UserNotificationsUI
 import UserNotifications
 
+@available(iOS 10.0, *)
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
