@@ -200,8 +200,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         content.body = NSString.localizedUserNotificationString(forKey: "Rise and shine! It's morning time!",
                                                                 arguments: nil)
         content.badge = 1
-        content.sound = UNNotificationSound.default()
-            //UNNotificationSound(named:"Glorious.mp3")
+        content.sound = UNNotificationSound(named:"Glorious.mp3")   //UNNotificationSound.default()
+            
         
        dateInfo.calendar = Calendar.autoupdatingCurrent
         
