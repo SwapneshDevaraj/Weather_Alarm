@@ -169,6 +169,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             printAlert(msg: alarmMsg)
             count += 1
             alarms.append("\(hour):\(min) \(time) \(AlarmNotification.alarmDays)")
+            dump(alarms)
+            self.scheduleLocalNotification(myHour: myHr , myMinute: myMin)
         }else{
             printAlert(msg: "Alarm already exists")
         }
@@ -183,8 +185,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         //defaults.set("\(alarmMsg)", forKey: "Alarm-\(count)")
        // print( "print the default value Alarm - \(defaults.string(forKey: "Alarm-\(count)") ?? "error")")
-        dump(alarms)
-   self.scheduleLocalNotification(myHour: myHr , myMinute: myMin)
+     
         
     }
     

@@ -14,10 +14,10 @@ import UserNotifications
 class AlarmNotification
 {
     let defaults:UserDefaults = UserDefaults.standard
-    var count = 0
+    
     
     static var alarmDays = ""
-    let requestIdentifier = "MorningAlarm"
+//    let requestIdentifier = "MorningAlarm"
     
     var dateInfo = DateComponents()
     
@@ -26,18 +26,18 @@ class AlarmNotification
     func setAlarmDays(button: ButtonProp, bool:Bool)
     {
         let ans = "\(button.titleLabel?.text ?? "") "
-        print(bool)
+     
         
         if(bool)
         {
-                print("in add days")
+            
             AlarmNotification.alarmDays += "\(button.titleLabel?.text ?? "") "
             
         }
         else {
             if let range = AlarmNotification.alarmDays.range(of: ans)
             {
-                print("in remove days")
+               
                 AlarmNotification.alarmDays.removeSubrange(range)
             }
         }

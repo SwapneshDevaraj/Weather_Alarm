@@ -35,7 +35,7 @@ class CirclePath: UIView {
     var timeArr = [Double: Int]()
     var count = 0
     var arr : [Double : Int]!
-    var viewArray = [UIView]()
+    
     var someInt = 0
     
     var alertMsg = ""
@@ -54,7 +54,7 @@ class CirclePath: UIView {
         minCircle.backgroundColor = UIColor.hexStringToUIColor(hex: "#1E282A")
         minCircle.clipsToBounds = true
         addSubview(minCircle)
-        viewArray.append(minCircle)
+        
         
         shapes.backgroundColor = .clear
         addSubview(shapes)
@@ -74,12 +74,7 @@ class CirclePath: UIView {
         
         
         self.arr = getMyValues()
-        
-        
-        
-        
-        
-        
+
     }
     
     
@@ -105,7 +100,7 @@ class CirclePath: UIView {
         
         powerButton.bounds = CGRect(x: 0.0, y: 0.0, width: self.bounds.size.width*0.55, height:self.bounds.size.width*0.2)
         powerButton.center = CGPoint(x: self.bounds.midX + self.bounds.midX*0.4, y: self.bounds.size.height*0.5)
-        powerButton.layer.cornerRadius = powerButton.bounds.size.width*0.5
+        //powerButton.layer.cornerRadius = powerButton.bounds.size.width*0.5
         
         days.bounds = CGRect(x: 0.0, y: 0.0, width: self.bounds.size.width, height: self.bounds.size.height)
         days.center = CGPoint(x: self.bounds.size.width*0.5, y: self.bounds.size.height*0.45)
@@ -113,8 +108,7 @@ class CirclePath: UIView {
         shapes.bounds = CGRect(x: 0.0, y: 0.0, width: self.bounds.size.width, height: self.bounds.size.height)
         shapes.center = CGPoint(x: self.bounds.size.width*0.5, y: self.bounds.size.height*0.5)
         
-        
-        
+
         
     }
     
@@ -146,28 +140,28 @@ class CirclePath: UIView {
     {
         
         for firsttouch in touches {
+            
             if firsttouch == touches.first!{
+                
                 let location = firsttouch.location(in:self)
                 
-                for myview in viewArray{
-                    
-                    if myview.frame.contains(location)
+                let dist = distancefromCentre(point: location)
+            
+                if dist >= hourCircle.bounds.size.width*0.5 && dist <= minCircle.bounds.size.width*0.5
                     {
                         
                         flag1 = true
                         
                         startTransform = minCircle.transform
                     }
-                }
-                if firsttouch.view == hourCircle.self{
-                    
+
+               
+               else if  dist >= 50 && dist <= hourCircle.bounds.size.width*0.5{
                     flag1 = false
                     
                     startTransform = hourCircle.transform
                 }
-                else {
-                    
-                }
+
                 let dx = location.x - self.center.x
                 let dy = location.y - self.center.y
                 // Store angle
@@ -187,22 +181,22 @@ class CirclePath: UIView {
             let dy = location.y - self.center.y
             
             let angle = atan2(dy, dx)
-          
-            print("ANgle is \(angle)")
+            
             angleDifference = CirclePath.startingAngle! - angle
-            print("Angle diff \(Double(angleDifference!).rounded(toPlaces: 2))")
+            
             if (flag1 == true)
             {
                 let radians = atan2f(Float(minCircle.transform.b), Float(minCircle.transform.a))
                 
-                //print("radians \(Double(radians).rounded(toPlaces: 2))")
+                //print("radians \(Double(radians).rounded(toPlaces: 2))
+                
                 updateMinuteLabel(radian: Double(radians).rounded(toPlaces: 1))
                 
                 minCircle.transform = CGAffineTransform(rotationAngle: -angleDifference!).concatenating(startTransform)
                 
                 
             }
-            else if (flag1 != true && firsttouch.view == hourCircle)
+            else if (flag1 == false )//&& firsttouch.view == hourCircle)
             {
                 let radians = atan2f(Float(hourCircle.transform.b), Float(hourCircle.transform.a))
                 
@@ -217,20 +211,46 @@ class CirclePath: UIView {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)
     {
+        if flag1 == true{
+        
+        for firsttouch in touches {
+            
+            let location = firsttouch.location(in:self)
+            let dx = location.x - self.center.x
+            let dy = location.y - self.center.y
+            
+            let angle = atan2(dy, dx)
+
+            angleDifference = CirclePath.startingAngle! - angle
+            
+            // print("Angle diff in ended \(Double(angleDifference!).rounded(toPlaces: 2))")
+            
+            print("Anglediff in deg \(ClockFace.radian2degree(a:angleDifference!)) \n")
+            
+            let decimalAngleDiff = ClockFace.radian2degree(a:angleDifference!).truncatingRemainder(dividingBy: 1)
+            
+            print("Decimal of angle diff \(decimalAngleDiff) \n")
+            
+            if (decimalAngleDiff) > 0.5 {
+                var  newAngle = 1 - abs(decimalAngleDiff)
+                newAngle = newAngle * 30
+                newAngle = newAngle + angleDifference!
+                
+                print("greater than 0.5 NewAngle is \(newAngle) \n")
+               minCircle.transform  = CGAffineTransform(rotationAngle:newAngle).concatenating(startTransform)
+            }else{
+                var lessAnlge = abs(decimalAngleDiff) * 30
+                lessAnlge = lessAnlge - angleDifference!
+                
+                print("less than 0.5  Lessangle is \(lessAnlge) \n")
+                minCircle.transform  = CGAffineTransform(rotationAngle: lessAnlge).concatenating(startTransform)
+            }
+            
+            }
+        }
         
         flag1 = nil
-//        for firsttouch in touches {
-//            
-//            let location = firsttouch.location(in:self)
-//            let dx = location.x - self.center.x
-//            let dy = location.y - self.center.y
-//            
-//            let angle = atan2(dy, dx)
-//            print("ANgle in ended \(Double(angle).rounded(toPlaces: 2))")
-//            angleDifference = CirclePath.startingAngle! - angle
-//            print("Angle diff in ended \(Double(angleDifference!).rounded(toPlaces: 2))")
-//        }
-//        
+        
         var dictArr = Array(arr.keys)
         dictArr = dictArr.sorted()
         

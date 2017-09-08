@@ -16,6 +16,11 @@ class ClockFace
         return b
     }
     
+    class func radian2degree(a:CGFloat)->CGFloat
+    {
+        let b = a * 180/CGFloat(Double.pi)
+        return b
+    }
     
    class func circleCircumferencePoints(sides:Int ,x:CGFloat ,y:CGFloat ,radius:CGFloat ,adjustment:CGFloat=0) -> [CGPoint]
     {

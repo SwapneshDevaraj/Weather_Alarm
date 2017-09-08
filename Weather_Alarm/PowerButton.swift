@@ -58,7 +58,7 @@ class PowerButton: UIView
         ampmButton.backgroundColor = UIColor.hexStringToUIColor(hex: "#2385D9")
         ampmButton.alpha = 0.8
         //currentTime()
-        ampmButton.setTitle("AM", for: .normal)
+        ampmButton.setTitle("PM", for: .normal)
     
         ampmButton.setTitleColor(UIColor.white, for: .normal)
         ampmButton.showsTouchWhenHighlighted = true
