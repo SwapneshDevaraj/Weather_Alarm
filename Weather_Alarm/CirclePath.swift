@@ -211,43 +211,43 @@ class CirclePath: UIView {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)
     {
-        if flag1 == true{
-        
-        for firsttouch in touches {
-            
-            let location = firsttouch.location(in:self)
-            let dx = location.x - self.center.x
-            let dy = location.y - self.center.y
-            
-            let angle = atan2(dy, dx)
-
-            angleDifference = CirclePath.startingAngle! - angle
-            
-            // print("Angle diff in ended \(Double(angleDifference!).rounded(toPlaces: 2))")
-            
-            print("Anglediff in deg \(ClockFace.radian2degree(a:angleDifference!)) \n")
-            
-            let decimalAngleDiff = ClockFace.radian2degree(a:angleDifference!).truncatingRemainder(dividingBy: 1)
-            
-            print("Decimal of angle diff \(decimalAngleDiff) \n")
-            
-            if (decimalAngleDiff) > 0.5 {
-                var  newAngle = 1 - abs(decimalAngleDiff)
-                newAngle = newAngle * 30
-                newAngle = newAngle + angleDifference!
-                
-                print("greater than 0.5 NewAngle is \(newAngle) \n")
-               minCircle.transform  = CGAffineTransform(rotationAngle:newAngle).concatenating(startTransform)
-            }else{
-                var lessAnlge = abs(decimalAngleDiff) * 30
-                lessAnlge = lessAnlge - angleDifference!
-                
-                print("less than 0.5  Lessangle is \(lessAnlge) \n")
-                minCircle.transform  = CGAffineTransform(rotationAngle: lessAnlge).concatenating(startTransform)
-            }
-            
-            }
-        }
+//        if flag1 == true{
+//
+//        for firsttouch in touches {
+//
+//            let location = firsttouch.location(in:self)
+//            let dx = location.x - self.center.x
+//            let dy = location.y - self.center.y
+//
+//            let angle = atan2(dy, dx)
+//
+//            angleDifference = CirclePath.startingAngle! - angle
+//
+//            // print("Angle diff in ended \(Double(angleDifference!).rounded(toPlaces: 2))")
+//
+//            print("Anglediff in deg \(ClockFace.radian2degree(a:angleDifference!)) \n")
+//
+//            let decimalAngleDiff = ClockFace.radian2degree(a:angleDifference!).truncatingRemainder(dividingBy: 1)
+//
+//            print("Decimal of angle diff \(decimalAngleDiff) \n")
+//
+//            if (decimalAngleDiff) > 0.5 {
+//                var  newAngle = 1 - abs(decimalAngleDiff)
+//                newAngle = newAngle * 30
+//                newAngle = newAngle + angleDifference!
+//
+//                print("greater than 0.5 NewAngle is \(newAngle) \n")
+//               minCircle.transform  = CGAffineTransform(rotationAngle:newAngle).concatenating(startTransform)
+//            }else{
+//                var lessAnlge = abs(decimalAngleDiff) * 30
+//                lessAnlge = lessAnlge - angleDifference!
+//
+//                print("less than 0.5  Lessangle is \(lessAnlge) \n")
+//                minCircle.transform  = CGAffineTransform(rotationAngle: lessAnlge).concatenating(startTransform)
+//            }
+//
+//            }
+//        }
         
         flag1 = nil
         

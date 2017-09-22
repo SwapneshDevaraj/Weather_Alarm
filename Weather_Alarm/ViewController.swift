@@ -165,12 +165,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let alarmForAraray = "\(hour):\(min) \(time) \(AlarmNotification.alarmDays)"
         
         print(alarmForAraray)
+        
+        let myDay = AlarmNotification.myWeekDays
+        
+        dump(myDay)
+        
         if !(alarms.contains(alarmForAraray)){
             printAlert(msg: alarmMsg)
             count += 1
             alarms.append("\(hour):\(min) \(time) \(AlarmNotification.alarmDays)")
             dump(alarms)
-            self.scheduleLocalNotification(myHour: myHr , myMinute: myMin)
+            self.scheduleLocalNotification(myHour: myHr , myMinute: myMin, myWeekDay: myDay)
         }else{
             printAlert(msg: "Alarm already exists")
         }
@@ -190,7 +195,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     
-    func scheduleLocalNotification(myHour:Int? ,myMinute:Int?)
+    func scheduleLocalNotification(myHour:Int? ,myMinute:Int? ,myWeekDay:[Int]?)
     {
         //print("inside notification")
         //let answer1 = UNNotificationAction(identifier: "Answer 1", title: "Dismiss", options: UNNotificationActionOptions.foreground)
@@ -209,7 +214,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         //let calender = Calendar.autoupdatingCurrent
         
        // dateInfo.month = dateInfo.month
-        dateInfo.weekday = 2
+
+
+        for day in myWeekDay! {
+             dateInfo.weekday = day
+        }
         
         dateInfo.hour = myHour
         dateInfo.minute = myMinute
@@ -217,12 +226,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         // Configure the trigger for a 7am wakeup.
         
-        let triggerTimer = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        //let triggerTimer = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         
-       // let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: false)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: false)
         
         // Create the request object.
-        let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: triggerTimer)
+        let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: trigger)
        
         
         

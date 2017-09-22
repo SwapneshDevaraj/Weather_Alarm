@@ -14,7 +14,7 @@ import UserNotifications
 class AlarmNotification
 {
     let defaults:UserDefaults = UserDefaults.standard
-    
+    static var myWeekDays = [Int]()
     
     static var alarmDays = ""
 //    let requestIdentifier = "MorningAlarm"
@@ -32,13 +32,13 @@ class AlarmNotification
         {
             
             AlarmNotification.alarmDays += "\(button.titleLabel?.text ?? "") "
-            
+            AlarmNotification.myWeekDays.append(button.tag)
         }
         else {
             if let range = AlarmNotification.alarmDays.range(of: ans)
             {
-               
                 AlarmNotification.alarmDays.removeSubrange(range)
+               // myWeekDays.removeSubrange(range)
             }
         }
         

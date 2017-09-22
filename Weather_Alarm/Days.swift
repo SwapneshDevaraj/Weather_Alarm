@@ -27,7 +27,6 @@ class Days: UIView
         self.isUserInteractionEnabled = true
        
         sunButton.backgroundColor = .clear
-        //sunButton.alpha = 0.6
         sunButton.setTitle("Sun", for: .normal)
        // sunButton.titleLabel?.adjustsFontSizeToFitWidth = true
         sunButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 15)
@@ -37,7 +36,6 @@ class Days: UIView
         sunButton.addTarget(self, action: #selector(togglePressed(button:)), for: UIControlEvents.touchUpInside)
 
         monButton.backgroundColor = .clear
-        //monButton.alpha = 0.6
         monButton.tag = 2
         monButton.setTitle("Mon", for: .normal)
         monButton.titleLabel?.adjustsFontSizeToFitWidth = true

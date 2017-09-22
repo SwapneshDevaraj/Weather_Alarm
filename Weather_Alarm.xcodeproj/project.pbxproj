@@ -294,7 +294,7 @@
 				TargetAttributes = {
 					0CAFAFA51F39DEF1007EBB26 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 8272WQL5C7;
+						DevelopmentTeam = B2YC3Y2382;
 						ProvisioningStyle = Automatic;
 					};
 					0CAFAFB91F39DEF1007EBB26 = {
@@ -538,7 +538,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 8272WQL5C7;
+				DEVELOPMENT_TEAM = B2YC3Y2382;
 				INFOPLIST_FILE = Weather_Alarm/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -556,7 +556,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 8272WQL5C7;
+				DEVELOPMENT_TEAM = B2YC3Y2382;
 				INFOPLIST_FILE = Weather_Alarm/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
