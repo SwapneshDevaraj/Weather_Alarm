@@ -205,7 +205,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         content.title = NSString.localizedUserNotificationString(forKey: "Wake up!", arguments: nil)
         content.body = NSString.localizedUserNotificationString(forKey: "Rise and shine! It's morning time!",
                                                                 arguments: nil)
-        content.badge = 1
+        //content.badge = 1
         content.sound = UNNotificationSound(named:"Glorious.mp3")   //UNNotificationSound.default()
             
         
@@ -218,6 +218,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
         for day in myWeekDay! {
              dateInfo.weekday = day
+            print("Weeday set is \(dateInfo.weekday ?? 99)")
         }
         
         dateInfo.hour = myHour
